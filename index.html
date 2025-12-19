@@ -27,9 +27,41 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        /* 优化移动端字体大小 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.4rem; }
+            h4 { font-size: 1.2rem; }
+            h5 { font-size: 1.1rem; }
+            h6 { font-size: 1rem; }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                font-size: 14px;
+            }
+            
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.3rem; }
+            h4 { font-size: 1.1rem; }
+            h5 { font-size: 1rem; }
+            h6 { font-size: 0.9rem; }
         }
         
         /* Top Navigation */
+        .navbar {
+            padding: 15px 0;
+        }
+        
         .navbar-brand {
             font-weight: 800;
             font-size: 1.8rem;
@@ -41,11 +73,11 @@
             color: var(--secondary-color);
         }
         
-        /* Hero Banner */
+        /* Hero Banner - 恢复最初版本 */
         .hero-banner {
             background: linear-gradient(135deg, #1a2980, #26d0ce);
             color: white;
-            padding: 100px 0 80px;
+            padding: 100px 0 60px;
             position: relative;
             overflow: hidden;
         }
@@ -69,97 +101,167 @@
         }
         
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             opacity: 0.9;
         }
         
-        .search-box {
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            padding: 10px 20px;
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
         }
         
-        .search-box input {
-            border: none;
-            flex: 1;
-            padding: 15px 20px;
+        .hero-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 1.1rem;
-            outline: none;
-            background: transparent;
-            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .search-box button {
+        .hero-btn-primary {
             background-color: white;
             color: var(--secondary-color);
             border: none;
-            border-radius: 50px;
-            padding: 15px 35px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
         
-        .search-box button:hover {
+        .hero-btn-primary:hover {
             background-color: var(--light-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            color: var(--secondary-color);
         }
         
-        .company-tagline {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 800px;
-            margin: 0 auto;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .company-tagline h3 {
+        .hero-btn-outline {
+            background-color: transparent;
             color: white;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            border: 2px solid white;
         }
         
-        .company-tagline p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 10px;
-        }
-        
-        /* Gift Card Carousel Section */
-        .giftcard-section {
-            padding: 80px 0;
+        .hero-btn-outline:hover {
             background-color: white;
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .hero-banner {
+                padding: 80px 0 50px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .hero-btn {
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            .hero-stats {
+                gap: 30px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-banner {
+                padding: 70px 0 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-btn {
+                width: 90%;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Section Common Styles */
         .section-title {
             color: var(--primary-color);
             margin-bottom: 40px;
             position: relative;
             padding-bottom: 15px;
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
         }
         
@@ -169,10 +271,10 @@
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
+            width: 80px;
+            height: 4px;
             background-color: var(--secondary-color);
-            border-radius: 5px;
+            border-radius: 2px;
         }
         
         .section-subtitle {
@@ -185,42 +287,54 @@
             margin-right: auto;
         }
         
-        /* Mobile-friendly gift card slider */
-        .giftcard-slider {
+        /* Gift Card Slider Section - 手机上可滑动 */
+        .giftcard-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .giftcard-slider-container {
             position: relative;
             width: 100%;
             overflow: hidden;
+            padding: 10px 0 40px;
         }
         
         .giftcard-track {
             display: flex;
-            transition: transform 0.5s ease;
-            padding: 10px 0;
+            transition: transform 0.3s ease;
+            padding: 10px 5px;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .giftcard-track:active {
+            cursor: grabbing;
         }
         
         .giftcard-item {
             flex: 0 0 auto;
-            width: 280px;
-            margin-right: 25px;
+            width: 260px;
+            margin: 0 15px;
             background-color: white;
-            border-radius: 20px;
-            padding: 30px 25px;
+            border-radius: 15px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border: 1px solid #f0f0f0;
         }
         
         .giftcard-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
         
         .giftcard-logo {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             color: var(--secondary-color);
-            height: 80px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -230,14 +344,14 @@
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--primary-color);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .giftcard-item p {
             color: #666;
-            margin-bottom: 25px;
-            font-size: 1rem;
-            min-height: 48px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            min-height: 40px;
         }
         
         .giftcard-item button {
@@ -245,49 +359,21 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            max-width: 200px;
+            max-width: 180px;
         }
         
         .giftcard-item button:hover {
             background-color: #1a8cff;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(38, 208, 206, 0.3);
+            box-shadow: 0 8px 15px rgba(38, 208, 206, 0.3);
         }
         
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .slider-btn {
-            background-color: var(--light-color);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        
-        .slider-btn:hover {
-            background-color: var(--secondary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        /* 移除左右按钮，只保留滑动指示点 */
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -295,8 +381,8 @@
         }
         
         .slider-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: #ddd;
             margin: 0 6px;
@@ -318,29 +404,29 @@
         .service-card {
             background-color: white;
             border-radius: 15px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 35px 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            border-top: 5px solid var(--secondary-color);
+            border-top: 4px solid var(--secondary-color);
             height: 100%;
             transition: all 0.3s ease;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
         
         .service-icon {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--secondary-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .service-card h4 {
             color: var(--primary-color);
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
         
@@ -349,54 +435,68 @@
             line-height: 1.7;
         }
         
-        /* Team Section - Horizontal scroll on mobile */
+        /* Team Section - 3个客服，手机上横向滑动 */
         .team-section {
             padding: 80px 0;
             background-color: white;
             overflow: hidden;
         }
         
-        .team-slider {
+        .team-slider-container {
             position: relative;
             width: 100%;
             overflow-x: auto;
-            padding: 20px 0 40px;
+            padding: 10px 0 30px;
             -webkit-overflow-scrolling: touch;
+        }
+        
+        .team-slider-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .team-slider-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .team-slider-container::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
         }
         
         .team-track {
             display: flex;
-            padding: 0 10px;
+            padding: 10px 5px;
             min-width: min-content;
         }
         
         .team-member {
             flex: 0 0 auto;
-            width: 280px;
-            margin-right: 30px;
+            width: 300px;
+            margin: 0 15px;
             text-align: center;
             background-color: #f8f9fa;
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 30px 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
         
         .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
         
         .team-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: white;
         }
         
@@ -404,11 +504,13 @@
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--primary-color);
+            font-size: 1.3rem;
         }
         
         .team-member p {
             color: #666;
             margin-bottom: 20px;
+            font-size: 0.95rem;
         }
         
         .team-member .contact-btn {
@@ -421,11 +523,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-block;
+            text-decoration: none;
         }
         
         .team-member .contact-btn:hover {
             background-color: #1a8cff;
             transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(38, 208, 206, 0.3);
         }
         
         /* Testimonials Section */
@@ -438,9 +542,9 @@
             background-color: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            border-left: 5px solid var(--secondary-color);
+            border-left: 4px solid var(--secondary-color);
             height: 100%;
         }
         
@@ -457,15 +561,15 @@
         }
         
         .customer-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: var(--light-color);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
         }
         
@@ -489,21 +593,21 @@
         .step-card {
             background-color: white;
             border-radius: 15px;
-            padding: 40px 30px;
+            padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             height: 100%;
-            border: 2px solid #f0f0f0;
+            border: 1px solid #f0f0f0;
         }
         
         .step-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
             border-color: var(--secondary-color);
         }
         
-        .step-number {
+        .step-icon {
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -513,14 +617,13 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            font-weight: 700;
             margin: 0 auto 25px;
         }
         
         .step-card h4 {
             color: var(--primary-color);
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
         
@@ -551,7 +654,7 @@
         
         .footer-column h4 {
             margin-bottom: 25px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
         }
         
@@ -568,6 +671,7 @@
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
         
         .footer-column ul li a:hover {
@@ -583,6 +687,7 @@
             margin-bottom: 12px;
             display: flex;
             align-items: center;
+            font-size: 0.95rem;
         }
         
         .contact-info i {
@@ -623,156 +728,79 @@
             font-size: 0.9rem;
         }
         
-        /* Rate Search Modal */
-        .rate-modal .modal-content {
-            border-radius: 20px;
-            border: none;
-            overflow: hidden;
-        }
-
-        .rate-modal .modal-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-bottom: none;
-            padding: 25px 30px;
-        }
-
-        .rate-modal .modal-header h5 {
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .rate-modal .modal-body {
-            padding: 30px;
-        }
-
-        .rate-result {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .rate-result h4 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .rate-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--secondary-color);
-            margin: 20px 0;
-        }
-
-        .rate-card-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .rate-card-type {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .giftcard-item {
-                width: 260px;
-            }
-        }
-        
+        /* Mobile Responsive Adjustments */
         @media (max-width: 768px) {
-            .hero-banner {
-                padding: 80px 0 60px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .giftcard-item {
-                width: 240px;
-                margin-right: 20px;
-            }
-            
-            .search-box {
-                flex-direction: column;
-                border-radius: 20px;
-                padding: 15px;
-            }
-            
-            .search-box input {
-                width: 100%;
-                margin-bottom: 15px;
-                border-radius: 10px;
-                background-color: rgba(255, 255, 255, 0.9);
-                color: #333;
-                text-align: center;
-            }
-            
-            .search-box button {
-                width: 100%;
-            }
-            
-            .company-tagline {
-                padding: 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero-banner {
-                padding: 70px 0 50px;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.9rem;
-            }
-            
             .section-title {
                 font-size: 1.8rem;
             }
             
+            .section-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 40px;
+            }
+            
+            .giftcard-item {
+                width: 240px;
+                margin: 0 10px;
+            }
+            
+            .team-member {
+                width: 280px;
+                margin: 0 10px;
+            }
+            
+            .service-card, .step-card, .testimonial-card {
+                padding: 25px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .giftcard-section, .services-section, .team-section, 
+            .testimonials-section, .howto-section {
+                padding: 60px 0;
+            }
+            
             .giftcard-item {
                 width: 220px;
+                padding: 20px 15px;
+            }
+            
+            .giftcard-logo {
+                font-size: 3rem;
+                height: 60px;
+            }
+            
+            .giftcard-item h5 {
+                font-size: 1.2rem;
             }
             
             .team-member {
                 width: 260px;
-                margin-right: 20px;
+                padding: 25px 20px;
+            }
+            
+            .team-avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+            
+            footer {
+                padding: 50px 0 25px;
             }
             
             .footer-column {
                 min-width: 100%;
-            }
-        }
-        
-        /* Mobile-specific styles for touch scrolling */
-        @media (max-width: 768px) {
-            .team-slider {
-                padding-bottom: 20px;
-            }
-            
-            .team-track {
-                padding-bottom: 10px;
             }
         }
     </style>
@@ -815,47 +843,49 @@
         </div>
     </nav>
 
-    <!-- Hero Banner -->
+    <!-- Hero Banner - 恢复最初版本，无汇率相关内容 -->
     <section id="home" class="hero-banner">
         <div class="container">
             <div class="hero-content">
-                <h1>Sell Your Gift Cards Instantly at Premium Rates</h1>
-                <p>GiftCardPro offers the most competitive exchange rates with instant payment. Join thousands of satisfied customers worldwide.</p>
+                <h1>Trade Your Gift Cards Instantly</h1>
+                <p>GiftCardPro offers the fastest and most secure way to exchange your gift cards for cash. Join thousands of satisfied customers worldwide.</p>
                 
-                <!-- Search Box -->
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search gift card name or type...">
-                    <button id="searchButton">Check Rate</button>
+                <div class="hero-buttons">
+                    <a href="#giftcards" class="hero-btn hero-btn-primary">Start Trading Now</a>
+                    <a href="#team" class="hero-btn hero-btn-outline">Contact Our Team</a>
                 </div>
                 
-                <!-- Company Tagline -->
-                <div class="company-tagline">
-                    <h3>Experience Professional & Lightning-Fast Service!</h3>
-                    <p>Advanced cloud trading system with 24/7 customer support.</p>
-                    <p>Join the future of gift card trading with GiftCardPro</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Satisfied Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50,000+</div>
+                        <div class="stat-label">Cards Traded</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gift Card Slider Section -->
+    <!-- Gift Card Slider Section - 手机上可滑动 -->
     <section id="giftcards" class="giftcard-section">
         <div class="container">
-            <h2 class="section-title">Popular Gift Cards We Accept</h2>
-            <p class="section-subtitle">Trade your gift cards instantly with our seamless platform. Get the best rates in the market.</p>
+            <h2 class="section-title">Supported Gift Cards</h2>
+            <p class="section-subtitle">Trade your gift cards from these popular brands instantly</p>
             
-            <div class="giftcard-slider">
+            <div class="giftcard-slider-container">
                 <div class="giftcard-track" id="giftcardTrack">
                     <!-- Gift cards will be inserted here by JavaScript -->
-                </div>
-                
-                <div class="slider-controls">
-                    <button class="slider-btn" id="prevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-btn" id="nextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
                 
                 <div class="slider-dots" id="sliderDots">
@@ -869,7 +899,7 @@
     <section id="services" class="services-section">
         <div class="container">
             <h2 class="section-title">Why Choose GiftCardPro?</h2>
-            <p class="section-subtitle">We provide the most reliable and efficient gift card trading service with unmatched benefits</p>
+            <p class="section-subtitle">We provide the most reliable and efficient gift card trading service</p>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -877,8 +907,8 @@
                         <div class="service-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h4>Instant Payment</h4>
-                        <p>Receive payment within minutes of trade confirmation. Our automated system ensures fastest transaction processing.</p>
+                        <h4>Lightning Fast</h4>
+                        <p>Get cash within minutes. Our automated system processes transactions instantly.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -887,16 +917,7 @@
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <h4>100% Secure</h4>
-                        <p>Bank-level encryption and security protocols protect your transactions and personal information at all times.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>Best Rates</h4>
-                        <p>Our advanced algorithms ensure you always get the highest possible exchange rates in the market.</p>
+                        <p>Bank-level encryption protects your transactions and personal information.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -905,20 +926,29 @@
                             <i class="fas fa-headset"></i>
                         </div>
                         <h4>24/7 Support</h4>
-                        <p>Round-the-clock customer support via multiple channels to assist you with any queries or issues.</p>
+                        <p>Round-the-clock customer support via multiple channels to assist you.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4>Wide Selection</h4>
+                        <p>We accept a wide variety of gift cards from all major brands and retailers.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section - Horizontal scroll on mobile -->
+    <!-- Team Section - 3个客服，手机上横向滑动 -->
     <section id="team" class="team-section">
         <div class="container">
             <h2 class="section-title">Our Trading Specialists</h2>
-            <p class="section-subtitle">Meet our dedicated team of gift card trading experts ready to assist you</p>
+            <p class="section-subtitle">Meet our dedicated team of gift card trading experts</p>
             
-            <div class="team-slider">
+            <div class="team-slider-container">
                 <div class="team-track" id="teamTrack">
                     <!-- Team members will be inserted here by JavaScript -->
                 </div>
@@ -929,14 +959,14 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Customer Testimonials</h2>
-            <p class="section-subtitle">See what our customers have to say about their experience with GiftCardPro</p>
+            <h2 class="section-title">Customer Reviews</h2>
+            <p class="section-subtitle">See what our customers have to say about their experience</p>
             
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            "I've traded over $5,000 worth of gift cards with GiftCardPro and always received payment within minutes. Their rates are consistently the best I've found."
+                            "I've traded over $5,000 worth of gift cards with GiftCardPro and always received payment within minutes. Their service is fast and reliable."
                         </div>
                         <div class="customer-info">
                             <div class="customer-avatar">
@@ -952,7 +982,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            "The 24/7 customer support is amazing! I had an issue at 2 AM and they resolved it immediately. Highly recommend GiftCardPro for all gift card trades."
+                            "The 24/7 customer support is amazing! I had an issue late at night and they resolved it immediately. Highly recommend GiftCardPro."
                         </div>
                         <div class="customer-info">
                             <div class="customer-avatar">
@@ -968,7 +998,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            "As a frequent trader, I appreciate the security and speed of GiftCardPro. Their platform is intuitive and the whole process takes just a few minutes."
+                            "As a frequent trader, I appreciate the security and speed of GiftCardPro. Their platform is intuitive and the whole process is seamless."
                         </div>
                         <div class="customer-info">
                             <div class="customer-avatar">
@@ -994,21 +1024,27 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="step-card">
-                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
                         <h4>Submit Your Card</h4>
-                        <p>Enter your gift card details through our secure platform or contact our team directly with the card information.</p>
+                        <p>Contact our team with your gift card details through WhatsApp, Telegram, or our contact form.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h4>Get Instant Quote</h4>
-                        <p>Receive an immediate rate quote for your gift card based on current market rates and card value.</p>
+                        <div class="step-icon">
+                            <i class="fas fa-comments-dollar"></i>
+                        </div>
+                        <h4>Get Instant Offer</h4>
+                        <p>Receive an immediate offer for your gift card based on current market value.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="step-card">
-                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-money-check-alt"></i>
+                        </div>
                         <h4>Receive Payment</h4>
                         <p>Once confirmed, receive payment instantly through your preferred method - bank transfer, e-wallet, or cryptocurrency.</p>
                     </div>
@@ -1030,8 +1066,8 @@
                         <p><i class="fas fa-map-marker-alt"></i> Global Trading Center</p>
                     </div>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/8615391667580" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/giftcardpro" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#"><i class="fab fa-weixin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
@@ -1052,24 +1088,24 @@
                 <div class="footer-column">
                     <h4>Popular Cards</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showRate('STEAM')">STEAM Gift Cards</a></li>
-                        <li><a href="javascript:void(0)" onclick="showRate('XBOX')">XBOX Gift Cards</a></li>
-                        <li><a href="javascript:void(0)" onclick="showRate('iTunes')">iTunes Gift Cards</a></li>
-                        <li><a href="javascript:void(0)" onclick="showRate('Google Play')">Google Play Cards</a></li>
-                        <li><a href="javascript:void(0)" onclick="showRate('RAZER GOLD')">Razer Gold Cards</a></li>
-                        <li><a href="javascript:void(0)" onclick="showRate('Amazon')">Amazon Gift Cards</a></li>
+                        <li><a href="#giftcards">STEAM Gift Cards</a></li>
+                        <li><a href="#giftcards">XBOX Gift Cards</a></li>
+                        <li><a href="#giftcards">iTunes Gift Cards</a></li>
+                        <li><a href="#giftcards">Google Play Cards</a></li>
+                        <li><a href="#giftcards">Razer Gold Cards</a></li>
+                        <li><a href="#giftcards">Amazon Gift Cards</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Trading Services</h4>
                     <ul>
-                        <li><a href="javascript:void(0)">Instant Trading</a></li>
-                        <li><a href="javascript:void(0)">Bulk Card Trading</a></li>
-                        <li><a href="javascript:void(0)">Corporate Services</a></li>
-                        <li><a href="javascript:void(0)">Rate Alerts</a></li>
-                        <li><a href="javascript:void(0)">Secure Payment</a></li>
-                        <li><a href="javascript:void(0)">24/7 Support</a></li>
+                        <li><a href="#services">Instant Trading</a></li>
+                        <li><a href="#services">Bulk Card Trading</a></li>
+                        <li><a href="#services">Corporate Services</a></li>
+                        <li><a href="#services">Secure Payment</a></li>
+                        <li><a href="#services">24/7 Support</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -1080,96 +1116,51 @@
         </div>
     </footer>
 
-    <!-- Rate Search Results Modal -->
-    <div class="modal fade rate-modal" id="rateSearchModal" tabindex="-1" aria-labelledby="rateSearchModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="rateSearchModalLabel">Current Exchange Rate</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="rate-result">
-                        <h4>Today's Rate For</h4>
-                        <div class="rate-card-name" id="searchResultCardName">STEAM Gift Card</div>
-                        <div class="rate-card-type" id="searchResultCardType">Steam Wallet Code</div>
-                        <div class="rate-value" id="searchResultRate">₦1,425,000</div>
-                        <p>Per $100 USD card value</p>
-                        <button class="trade-now-btn mt-4" onclick="startTradeFromSearch()">Trade Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Gift card data
         const giftCards = [
-            { id: 1, name: "STEAM", type: "Steam Wallet Code", icon: "fab fa-steam", color: "#171a21", rate: 1425 },
-            { id: 2, name: "XBOX", type: "Xbox Gift Card", icon: "fab fa-xbox", color: "#107c10", rate: 1380 },
-            { id: 3, name: "iTunes", type: "Apple Gift Card", icon: "fab fa-apple", color: "#000000", rate: 1400 },
-            { id: 4, name: "Google Play", type: "Google Play Card", icon: "fab fa-google-play", color: "#4285f4", rate: 1360 },
-            { id: 5, name: "RAZER GOLD", type: "Razer Gold Code", icon: "fas fa-gem", color: "#44d62c", rate: 1320 },
-            { id: 6, name: "Amazon", type: "Amazon Gift Card", icon: "fab fa-amazon", color: "#ff9900", rate: 1390 },
-            { id: 7, name: "PlayStation", type: "PSN Gift Card", icon: "fab fa-playstation", color: "#003791", rate: 1375 },
-            { id: 8, name: "Nintendo", type: "Nintendo eShop", icon: "fas fa-gamepad", color: "#e60012", rate: 1340 },
-            { id: 9, name: "Spotify", type: "Spotify Premium", icon: "fab fa-spotify", color: "#1db954", rate: 1280 },
-            { id: 10, name: "Netflix", type: "Netflix Gift Card", icon: "fab fa-netflix", color: "#e50914", rate: 1300 }
+            { id: 1, name: "STEAM", type: "Steam Wallet Code", icon: "fab fa-steam", color: "#171a21" },
+            { id: 2, name: "XBOX", type: "Xbox Gift Card", icon: "fab fa-xbox", color: "#107c10" },
+            { id: 3, name: "iTunes", type: "Apple Gift Card", icon: "fab fa-apple", color: "#000000" },
+            { id: 4, name: "Google Play", type: "Google Play Card", icon: "fab fa-google-play", color: "#4285f4" },
+            { id: 5, name: "RAZER GOLD", type: "Razer Gold Code", icon: "fas fa-gem", color: "#44d62c" },
+            { id: 6, name: "Amazon", type: "Amazon Gift Card", icon: "fab fa-amazon", color: "#ff9900" },
+            { id: 7, name: "PlayStation", type: "PSN Gift Card", icon: "fab fa-playstation", color: "#003791" },
+            { id: 8, name: "Nintendo", type: "Nintendo eShop", icon: "fas fa-gamepad", color: "#e60012" },
+            { id: 9, name: "Spotify", type: "Spotify Premium", icon: "fab fa-spotify", color: "#1db954" },
+            { id: 10, name: "Netflix", type: "Netflix Gift Card", icon: "fab fa-netflix", color: "#e50914" }
         ];
 
-        // Team members data
+        // Team members data - 只设置3个客服
         const teamMembers = [
             { id: 1, name: "Trader_Ki", position: "Senior Trading Manager", icon: "fas fa-user-tie" },
             { id: 2, name: "Trader_Xing", position: "Trading Operations Head", icon: "fas fa-user-tie" },
-            { id: 3, name: "Trader_Tian", position: "Customer Relations Manager", icon: "fas fa-user-tie" },
-            { id: 4, name: "Trader_Zhe", position: "Payment Processing Manager", icon: "fas fa-user-tie" },
-            { id: 5, name: "Trader_Lee", position: "Rate Analysis Specialist", icon: "fas fa-user-tie" },
-            { id: 6, name: "Trader_Wang", position: "Security & Compliance Officer", icon: "fas fa-user-tie" }
+            { id: 3, name: "Trader_Tian", position: "Customer Relations Manager", icon: "fas fa-user-tie" }
         ];
-
-        // Card display information for search
-        const cardInfo = {
-            'STEAM': { name: 'STEAM Gift Card', type: 'Steam Wallet Code', rate: 1425 },
-            'XBOX': { name: 'XBOX Gift Card', type: 'Microsoft Store Card', rate: 1380 },
-            'iTunes': { name: 'iTunes Gift Card', type: 'Apple Store & Music', rate: 1400 },
-            'Google Play': { name: 'Google Play Card', type: 'Android App Store', rate: 1360 },
-            'RAZER GOLD': { name: 'RAZER GOLD Card', type: 'Razer Gold Wallet', rate: 1320 },
-            'Amazon': { name: 'Amazon Gift Card', type: 'Amazon.com Shopping', rate: 1390 },
-            'PlayStation': { name: 'PlayStation Card', type: 'PSN Wallet Funds', rate: 1375 },
-            'Nintendo': { name: 'Nintendo Card', type: 'eShop Digital Code', rate: 1340 },
-            'Spotify': { name: 'Spotify Gift Card', type: 'Premium Subscription', rate: 1280 },
-            'Netflix': { name: 'Netflix Gift Card', type: 'Streaming Subscription', rate: 1300 }
-        };
 
         // DOM elements
         const giftcardTrack = document.getElementById('giftcardTrack');
         const teamTrack = document.getElementById('teamTrack');
         const sliderDots = document.getElementById('sliderDots');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
         
-        // Rate Search Modal
-        const rateSearchModal = new bootstrap.Modal(document.getElementById('rateSearchModal'));
-        let currentSearchCard = '';
+        // 礼品卡滑动相关变量
+        let isDragging = false;
+        let startPosition = 0;
+        let currentTranslate = 0;
+        let previousTranslate = 0;
+        let currentIndex = 0;
+        let sliderInterval;
 
-        // Initialize gift card slider
+        // 初始化礼品卡滑动
         function initGiftCardSlider() {
-            // Clear existing content
+            // 清空现有内容
             giftcardTrack.innerHTML = '';
             sliderDots.innerHTML = '';
             
-            // Calculate cards per view based on screen size
-            let cardsPerView = 4;
-            if (window.innerWidth < 992) cardsPerView = 3;
-            if (window.innerWidth < 768) cardsPerView = 2;
-            if (window.innerWidth < 576) cardsPerView = 1;
-            
-            // Create gift card items
+            // 创建礼品卡项目
             giftCards.forEach((card, index) => {
-                // Create card element
+                // 创建卡片元素
                 const cardElement = document.createElement('div');
                 cardElement.className = 'giftcard-item';
                 cardElement.innerHTML = `
@@ -1178,36 +1169,42 @@
                     </div>
                     <h5>${card.name}</h5>
                     <p>${card.type}</p>
-                    <button onclick="showRate('${card.name}')">Check Rate</button>
+                    <button onclick="contactForCard('${card.name}')">Trade Now</button>
                 `;
                 
-                // Set card color
+                // 设置卡片颜色
                 const icon = cardElement.querySelector('i');
                 icon.style.color = card.color;
                 
                 giftcardTrack.appendChild(cardElement);
-                
-                // Create slider dot
-                if (index < Math.ceil(giftCards.length / cardsPerView)) {
-                    const dot = document.createElement('div');
-                    dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
-                    dot.dataset.index = index;
-                    dot.addEventListener('click', () => goToSlide(index));
-                    sliderDots.appendChild(dot);
-                }
             });
             
-            // Set initial position
-            currentSlide = 0;
+            // 创建滑动指示点
+            giftCards.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
+                dot.dataset.index = index;
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderDots.appendChild(dot);
+            });
+            
+            // 设置初始位置
+            currentIndex = 0;
             updateSliderPosition();
+            
+            // 添加触摸事件监听
+            addTouchListeners();
+            
+            // 开始自动滑动
+            startAutoSlide();
         }
 
-        // Initialize team slider
+        // 初始化团队滑块
         function initTeamSlider() {
-            // Clear existing content
+            // 清空现有内容
             teamTrack.innerHTML = '';
             
-            // Create team member items
+            // 创建团队成员项目
             teamMembers.forEach(member => {
                 const memberElement = document.createElement('div');
                 memberElement.className = 'team-member';
@@ -1217,167 +1214,152 @@
                     </div>
                     <h4>${member.name}</h4>
                     <p>${member.position}</p>
-                    <button class="contact-btn" onclick="contactTeamMember('${member.name}')">Contact Now</button>
+                    <a href="https://wa.me/8615391667580?text=I%20would%20like%20to%20contact%20${member.name}%20from%20GiftCardPro" 
+                       target="_blank" class="contact-btn">Contact Now</a>
                 `;
                 
                 teamTrack.appendChild(memberElement);
             });
         }
 
-        // Gift card slider variables
-        let currentSlide = 0;
-        let totalSlides = 0;
-
-        // Update slider position
-        function updateSliderPosition() {
-            // Calculate cards per view based on screen size
-            let cardsPerView = 4;
-            if (window.innerWidth < 992) cardsPerView = 3;
-            if (window.innerWidth < 768) cardsPerView = 2;
-            if (window.innerWidth < 576) cardsPerView = 1;
+        // 添加触摸事件监听
+        function addTouchListeners() {
+            giftcardTrack.addEventListener('touchstart', touchStart);
+            giftcardTrack.addEventListener('touchmove', touchMove);
+            giftcardTrack.addEventListener('touchend', touchEnd);
             
-            totalSlides = Math.ceil(giftCards.length / cardsPerView);
-            
-            // Calculate translateX value
-            const translateX = -currentSlide * 100;
-            giftcardTrack.style.transform = `translateX(${translateX}%)`;
-            
-            // Update dots
-            const dots = document.querySelectorAll('.slider-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            giftcardTrack.addEventListener('mousedown', touchStart);
+            giftcardTrack.addEventListener('mousemove', touchMove);
+            giftcardTrack.addEventListener('mouseup', touchEnd);
+            giftcardTrack.addEventListener('mouseleave', touchEnd);
         }
 
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            updateSliderPosition();
-        }
-
-        // Next slide
-        function nextSlide() {
-            currentSlide++;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            updateSliderPosition();
-        }
-
-        // Previous slide
-        function prevSlide() {
-            currentSlide--;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
-            updateSliderPosition();
-        }
-
-        // Show rate for specific card
-        function showRate(cardName) {
-            const card = cardInfo[cardName] || { 
-                name: 'Standard Gift Card', 
-                type: 'Generic Gift Card', 
-                rate: 1350 
-            };
+        // 触摸开始
+        function touchStart(event) {
+            // 停止自动滑动
+            clearInterval(sliderInterval);
             
-            currentSearchCard = cardName;
-            
-            // Format rate
-            const formattedRate = '₦' + (card.rate * 1000).toLocaleString('en-US');
-            
-            // Update modal content
-            document.getElementById('searchResultCardName').textContent = card.name;
-            document.getElementById('searchResultCardType').textContent = card.type;
-            document.getElementById('searchResultRate').textContent = formattedRate;
-            
-            // Show modal
-            rateSearchModal.show();
-        }
-
-        // Search function
-        function performSearch() {
-            const query = searchInput.value.trim().toLowerCase();
-            
-            if (!query) {
-                alert('Please enter a gift card name to search');
-                return;
+            if (event.type === 'touchstart') {
+                startPosition = event.touches[0].clientX;
+            } else {
+                startPosition = event.clientX;
+                event.preventDefault();
             }
             
-            // Find matching card
-            let matchedCard = null;
-            for (const cardKey in cardInfo) {
-                const card = cardInfo[cardKey];
-                if (card.name.toLowerCase().includes(query) || 
-                    card.type.toLowerCase().includes(query) ||
-                    cardKey.toLowerCase().includes(query)) {
-                    matchedCard = card;
-                    currentSearchCard = cardKey;
-                    break;
+            isDragging = true;
+            giftcardTrack.style.transition = 'none';
+        }
+
+        // 触摸移动
+        function touchMove(event) {
+            if (!isDragging) return;
+            
+            let currentPosition = 0;
+            if (event.type === 'touchmove') {
+                currentPosition = event.touches[0].clientX;
+            } else {
+                currentPosition = event.clientX;
+            }
+            
+            const diff = currentPosition - startPosition;
+            currentTranslate = previousTranslate + diff;
+            
+            // 限制滑动范围
+            const maxTranslate = 0;
+            const minTranslate = -(giftCards.length - 1) * getSlideWidth();
+            
+            if (currentTranslate > maxTranslate) {
+                currentTranslate = maxTranslate;
+            } else if (currentTranslate < minTranslate) {
+                currentTranslate = minTranslate;
+            }
+            
+            giftcardTrack.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        // 触摸结束
+        function touchEnd() {
+            isDragging = false;
+            giftcardTrack.style.transition = 'transform 0.3s ease';
+            
+            // 计算最近的幻灯片索引
+            const movedBy = currentTranslate - previousTranslate;
+            const slideWidth = getSlideWidth();
+            
+            if (Math.abs(movedBy) > slideWidth / 4) {
+                if (movedBy < 0 && currentIndex < giftCards.length - 1) {
+                    currentIndex++;
+                } else if (movedBy > 0 && currentIndex > 0) {
+                    currentIndex--;
                 }
             }
             
-            if (matchedCard) {
-                // Format rate
-                const formattedRate = '₦' + (matchedCard.rate * 1000).toLocaleString('en-US');
-                
-                // Update modal content
-                document.getElementById('searchResultCardName').textContent = matchedCard.name;
-                document.getElementById('searchResultCardType').textContent = matchedCard.type;
-                document.getElementById('searchResultRate').textContent = formattedRate;
-                
-                // Show modal
-                rateSearchModal.show();
-            } else {
-                // Show default rate for unknown card
-                document.getElementById('searchResultCardName').textContent = 'Standard Gift Card';
-                document.getElementById('searchResultCardType').textContent = 'Generic Gift Card';
-                document.getElementById('searchResultRate').textContent = '₦1,350,000';
-                currentSearchCard = 'Standard';
-                
-                // Show modal
-                rateSearchModal.show();
-            }
+            // 更新位置
+            updateSliderPosition();
+            previousTranslate = currentIndex * -getSlideWidth();
+            
+            // 重新开始自动滑动
+            startAutoSlide();
         }
 
-        // Start trade from search result
-        function startTradeFromSearch() {
-            const message = `I want to trade ${currentSearchCard} gift card based on the rate shown.`;
+        // 获取幻灯片宽度
+        function getSlideWidth() {
+            const slide = document.querySelector('.giftcard-item');
+            if (!slide) return 280; // 默认宽度
+            return slide.offsetWidth + 30; // 包括 margin
+        }
+
+        // 更新滑块位置
+        function updateSliderPosition() {
+            const slideWidth = getSlideWidth();
+            currentTranslate = currentIndex * -slideWidth;
+            previousTranslate = currentTranslate;
+            
+            giftcardTrack.style.transform = `translateX(${currentTranslate}px)`;
+            
+            // 更新指示点
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // 跳转到指定幻灯片
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSliderPosition();
+            
+            // 重新开始自动滑动
+            clearInterval(sliderInterval);
+            startAutoSlide();
+        }
+
+        // 开始自动滑动
+        function startAutoSlide() {
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(() => {
+                if (currentIndex < giftCards.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateSliderPosition();
+            }, 5000);
+        }
+
+        // 联系特定卡片
+        function contactForCard(cardName) {
+            const message = `I want to trade ${cardName} gift card.`;
             window.open(`https://wa.me/8615391667580?text=${encodeURIComponent(message)}`, '_blank');
-            rateSearchModal.hide();
         }
 
-        // Contact team member
-        function contactTeamMember(memberName) {
-            const message = `I would like to contact ${memberName} from GiftCardPro for assistance.`;
-            window.open(`https://wa.me/8615391667580?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        // Initialize on page load
+        // 页面加载初始化
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize sliders
+            // 初始化滑块
             initGiftCardSlider();
             initTeamSlider();
             
-            // Set up gift card slider controls
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-            
-            // Set up search functionality
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-            
-            // Auto-advance gift card slider
-            setInterval(nextSlide, 5000);
-            
-            // Update slider on window resize
-            window.addEventListener('resize', function() {
-                initGiftCardSlider();
-            });
-            
-            // Smooth scroll navigation
+            // 平滑滚动导航
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1395,11 +1377,16 @@
                 });
             });
             
-            // Phone number click event
+            // 电话号码点击事件
             document.querySelectorAll('a[href^="tel:"]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     console.log('Calling: ' + this.textContent);
                 });
+            });
+            
+            // 窗口大小变化时重新初始化滑块
+            window.addEventListener('resize', function() {
+                initGiftCardSlider();
             });
         });
     </script>
