@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT礼品卡交易平台 - 武汉最大的礼品卡交易平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IT Gift Card Trading Platform - Best Rates for Gift Cards</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -19,15 +19,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
         
         body {
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
+        /* Top Navigation Bar */
         .navbar-brand {
             font-weight: bold;
             font-size: 1.8rem;
@@ -38,15 +40,16 @@
             color: var(--secondary-color);
         }
         
-        .hero-section {
+        /* Top Banner Section - Sell Gift Cards at High Prices */
+        .top-banner {
             background: linear-gradient(135deg, #1a2980, #26d0ce);
             color: white;
-            padding: 100px 0;
+            padding: 80px 0 60px;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-section::before {
+        .top-banner::before {
             content: '';
             position: absolute;
             top: 0;
@@ -58,41 +61,101 @@
             background-position: center;
         }
         
-        .hero-content {
+        .banner-content {
             position: relative;
             z-index: 2;
-        }
-        
-        .stats-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
         }
         
-        .stats-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stats-card i {
+        .banner-content h1 {
             font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-box {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-box input {
+            border: none;
+            flex: 1;
+            padding: 12px 15px;
+            font-size: 1rem;
+            outline: none;
+            background: transparent;
+            color: white;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .search-box button {
+            background-color: white;
             color: var(--secondary-color);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background-color: var(--light-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Professional Service Experience Section */
+        .experience-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .experience-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .experience-section p {
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 15px;
         }
         
-        .stats-number {
-            font-size: 2.5rem;
+        .join-text {
+            color: white;
             font-weight: bold;
-            color: var(--primary-color);
-            display: block;
+            font-size: 1.3rem;
+            margin-top: 20px;
         }
         
-        .stats-label {
-            color: #666;
-            font-size: 1rem;
+        /* Gift Card Carousel Section (Separate Row) */
+        .gift-card-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
         }
         
         .section-title {
@@ -100,44 +163,257 @@
             margin-bottom: 40px;
             position: relative;
             padding-bottom: 15px;
+            text-align: center;
+            font-size: 2.2rem;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            left: 0;
+            left: 50%;
             bottom: 0;
-            width: 60px;
+            transform: translateX(-50%);
+            width: 80px;
             height: 4px;
             background-color: var(--secondary-color);
         }
         
-        .card-item {
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .carousel-container {
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+        
+        .gift-card-carousel {
+            display: flex;
+            width: 100%;
+            animation: scrollCards 40s linear infinite;
+        }
+        
+        .gift-card-carousel:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scrollCards {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .gift-card-item {
+            flex: 0 0 auto;
+            width: 250px;
+            margin-right: 20px;
             background-color: white;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 15px;
+            padding: 25px 20px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            height: 100%;
-            border: 1px solid #eee;
         }
         
-        .card-item:hover {
+        .gift-card-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
-        .card-icon {
-            font-size: 2.5rem;
+        .gift-card-logo {
+            font-size: 3.5rem;
             margin-bottom: 15px;
             color: var(--secondary-color);
         }
         
-        .card-name {
-            font-weight: bold;
+        .gift-card-item h5 {
+            font-weight: 700;
             margin-bottom: 10px;
             color: var(--primary-color);
+        }
+        
+        .gift-card-item p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .gift-card-item button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gift-card-item button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* High Rate Gift Cards and Calculator Combined Section (Side by Side) */
+        .rate-calculator-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .rate-table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .rate-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .rate-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .rate-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+        }
+        
+        .rate-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .rate-table tr:hover {
+            background-color: #e8f4fc;
+        }
+        
+        .rate-table .card-name {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .calculator-container {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .calculator-title {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .calculator-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .calculator-form {
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .calculator-result {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
+        
+        .result-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin: 15px 0;
+        }
+        
+        .trade-now-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 0;
+        }
+        
+        .trade-now-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* Our Services Section */
+        .services-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
         }
         
         .feature-card {
@@ -147,12 +423,19 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             margin-bottom: 30px;
             border-top: 4px solid var(--secondary-color);
+            height: 100%;
         }
         
         .feature-icon {
             font-size: 3rem;
             color: var(--secondary-color);
             margin-bottom: 20px;
+        }
+        
+        /* Our Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: white;
         }
         
         .team-member {
@@ -171,6 +454,12 @@
             margin: 0 auto 15px;
             font-size: 3rem;
             color: var(--primary-color);
+        }
+        
+        /* Customer Reviews Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
         }
         
         .testimonial-card {
@@ -197,149 +486,265 @@
             border-left: 4px solid var(--accent-color);
         }
         
-        .btn-primary {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
+        /* How to Trade Section */
+        .how-to-section {
+            padding: 80px 0;
+            background-color: white;
         }
         
-        .btn-primary:hover {
-            background-color: #2980b9;
-            border-color: #2980b9;
-        }
-        
-        .btn-outline-primary {
-            color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-        
-        .carousel-container {
-            margin-bottom: 50px;
-        }
-        
-        .gift-card-carousel .carousel-item {
-            padding: 20px;
-        }
-        
-        .gift-card-item {
+        .card-item {
             background-color: white;
             border-radius: 10px;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 0 10px;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #eee;
         }
         
-        .gift-card-item:hover {
-            transform: scale(1.05);
+        .card-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
-        .gift-card-logo {
-            font-size: 3rem;
+        .card-icon {
+            font-size: 2.5rem;
             margin-bottom: 15px;
             color: var(--secondary-color);
         }
         
+        /* Footer Section */
         footer {
             background-color: var(--primary-color);
             color: white;
-            padding: 60px 0 20px;
+            padding: 60px 0 30px;
         }
         
-        footer a {
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
-        footer a:hover {
+        .footer-column ul li a:hover {
             color: white;
-            text-decoration: underline;
         }
         
-        .newsletter-form {
-            display: flex;
+        .contact-info {
             margin-top: 15px;
         }
         
-        .newsletter-form input {
-            flex: 1;
-            padding: 10px;
-            border-radius: 5px 0 0 5px;
-            border: none;
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         
-        .newsletter-form button {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
+        .contact-info i {
+            margin-right: 10px;
+            width: 20px;
         }
         
         .copyright {
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            margin-top: 40px;
             text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
             color: #aaa;
             font-size: 0.9rem;
         }
         
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 60px 0;
-            }
-            
-            .stats-card {
-                padding: 15px;
-            }
-            
-            .stats-number {
-                font-size: 2rem;
-            }
-            
-            .feature-card, .testimonial-card {
-                padding: 20px;
+        /* Rate Search Modal */
+        .rate-modal .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .rate-modal .modal-header {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: white;
+            border-bottom: none;
+        }
+
+        .rate-modal .modal-body {
+            padding: 30px;
+        }
+
+        .rate-result {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .rate-result h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .rate-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .rate-card-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .rate-card-type {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.2rem;
             }
             
             .section-title {
                 font-size: 1.8rem;
             }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-banner {
+                padding: 60px 0 40px;
+            }
+            
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .calculator-container {
+                padding: 25px;
+            }
+            
+            .gift-card-item {
+                width: 220px;
+            }
+            
+            .rate-table th,
+            .rate-table td {
+                padding: 12px 10px;
+                font-size: 0.95rem;
+            }
         }
         
         @media (max-width: 576px) {
-            .hero-section h1 {
-                font-size: 2rem;
+            .top-banner {
+                padding: 50px 0 30px;
             }
             
-            .newsletter-form {
+            .banner-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .search-box {
                 flex-direction: column;
+                border-radius: 15px;
+                padding: 15px;
             }
             
-            .newsletter-form input, .newsletter-form button {
+            .search-box input {
                 width: 100%;
-                border-radius: 5px;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                text-align: center;
+            }
+            
+            .search-box button {
+                width: 100%;
+            }
+            
+            .experience-section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .calculator-container {
+                padding: 20px;
+            }
+            
+            .calculator-title {
+                font-size: 1.5rem;
+            }
+            
+            .gift-card-item {
+                width: 200px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+        
+        /* Ensure proper display on very small devices */
+        @media (max-width: 360px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .gift-card-item {
+                width: 180px;
+                padding: 20px 15px;
+            }
+            
+            .gift-card-logo {
+                font-size: 2.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -351,217 +756,299 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">首页</a>
+                        <a class="nav-link active" href="#top-banner">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">关于我们</a>
+                        <a class="nav-link" href="#gift-cards">Gift Cards</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">服务</a>
+                        <a class="nav-link" href="#rate-calculator">Rate Calculator</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#cards">礼品卡</a>
+                        <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#team">团队</a>
+                        <a class="nav-link" href="#team">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">客户评价</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">联系</a>
+                        <a class="nav-link" href="#testimonials">Reviews</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="btn btn-primary" href="tel:+8615391667580">📞 +86 15391667580</a>
+                        <a class="btn btn-primary" href="tel:+8615391667580">📞 +86 123456789</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- 首页横幅 -->
-    <section id="home" class="hero-section">
+    <!-- Top Banner Section - Sell Gift Cards at High Prices -->
+    <section id="top-banner" class="top-banner">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <h1 class="display-4 fw-bold mb-4">欢迎来到 IT 礼品卡交易平台</h1>
-                    <p class="lead mb-4">武汉最大的礼品卡交易平台。以最佳汇率将您的礼品卡兑换成现金，闪电般快速处理。</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#cards" class="btn btn-light btn-lg">开始交易</a>
-                        <a href="#about" class="btn btn-outline-light btn-lg">了解更多</a>
-                    </div>
+            <div class="banner-content">
+                <h1>Sell Gift Cards at High Prices Instantly</h1>
+                <p>We offer the most competitive prices and instant response, bringing spontaneous profit growth to customers.</p>
+                
+                <!-- Search Box -->
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Enter gift card name or type...">
+                    <button id="searchButton">Search</button>
                 </div>
-                <div class="col-lg-6">
-                    <div class="row mt-5 mt-lg-0">
-                        <div class="col-6">
-                            <div class="stats-card">
-                                <i class="fas fa-users"></i>
-                                <span class="stats-number">1000+</span>
-                                <span class="stats-label">满意客户</span>
-                            </div>
-                            <div class="stats-card">
-                                <i class="fas fa-star"></i>
-                                <span class="stats-number">99%</span>
-                                <span class="stats-label">满意度</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="stats-card">
-                                <i class="fas fa-gift"></i>
-                                <span class="stats-number">50000+</span>
-                                <span class="stats-label">交易卡数</span>
-                            </div>
-                            <div class="stats-card">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span class="stats-number">5</span>
-                                <span class="stats-label">年经验</span>
-                            </div>
-                        </div>
-                    </div>
+                
+                <!-- Professional Service Experience Section -->
+                <div class="experience-section">
+                    <h3>Want to know the exchange rate！！！！！！！</h3>
+                    <p>Please click the button above to inquire!！！！！！！</p>
+                    <p class="join-text">Join the future of trading Gift Cards</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 支持的礼品卡轮播 -->
-    <section id="cards" class="py-5">
+    <!-- Gift Card Carousel Section (Separate Row) -->
+    <section id="gift-cards" class="gift-card-section">
         <div class="container">
-            <h2 class="section-title text-center">支持的礼品卡</h2>
-            <p class="text-center mb-5">交易这些热门品牌的礼品卡，享受最佳汇率</p>
+            <h2 class="section-title">Popular Gift Card Trading</h2>
+            <p class="section-subtitle">Trade these popular brand gift cards, enjoy the best rates and fast transactions</p>
             
             <div class="carousel-container">
-                <div id="giftCardCarousel" class="carousel slide gift-card-carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- 第一组卡片 -->
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fab fa-steam"></i>
-                                        </div>
-                                        <h5>STEAM</h5>
-                                        <p>Steam Card / eCode</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fab fa-xbox"></i>
-                                        </div>
-                                        <h5>XBOX</h5>
-                                        <p>Xbox Physical Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fab fa-apple"></i>
-                                        </div>
-                                        <h5>iTunes</h5>
-                                        <p>Apple Physical Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fas fa-gem"></i>
-                                        </div>
-                                        <h5>RAZER GOLD</h5>
-                                        <p>Razer Gold Card / code</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="gift-card-carousel">
+                    <!-- First set of cards -->
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-steam"></i>
                         </div>
-                        <!-- 第二组卡片 -->
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fab fa-google-play"></i>
-                                        </div>
-                                        <h5>Google Play</h5>
-                                        <p>Google Play Gift Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <h5>Foot Locker</h5>
-                                        <p>Foot Locker Gift Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fas fa-crown"></i>
-                                        </div>
-                                        <h5>GOLD</h5>
-                                        <p>Gold Gift Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-6">
-                                    <div class="gift-card-item">
-                                        <div class="gift-card-logo">
-                                            <i class="fas fa-font"></i>
-                                        </div>
-                                        <h5>Font Tester</h5>
-                                        <p>Font Tester Card</p>
-                                        <a href="#contact" class="btn btn-outline-primary btn-sm">立即咨询</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h5>STEAM</h5>
+                        <p>Steam Card / eCode</p>
+                        <button onclick="openCalculator('STEAM')">Get Quote</button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#giftCardCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">上一页</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#giftCardCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">下一页</span>
-                    </button>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-xbox"></i>
+                        </div>
+                        <h5>XBOX</h5>
+                        <p>Xbox Physical Card</p>
+                        <button onclick="openCalculator('XBOX')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <h5>iTunes</h5>
+                        <p>Apple Physical Card</p>
+                        <button onclick="openCalculator('iTunes')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h5>RAZER GOLD</h5>
+                        <p>Razer Gold Card / code</p>
+                        <button onclick="openCalculator('RAZER GOLD')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-google-play"></i>
+                        </div>
+                        <h5>Google Play</h5>
+                        <p>Google Play Gift Card</p>
+                        <button onclick="openCalculator('Google Play')">Get Quote</button>
+                    </div>
+                    
+                    <!-- Second set of cards (duplicate for continuous scrolling) -->
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-steam"></i>
+                        </div>
+                        <h5>STEAM</h5>
+                        <p>Steam Card / eCode</p>
+                        <button onclick="openCalculator('STEAM')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-xbox"></i>
+                        </div>
+                        <h5>XBOX</h5>
+                        <p>Xbox Physical Card</p>
+                        <button onclick="openCalculator('XBOX')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <h5>iTunes</h5>
+                        <p>Apple Physical Card</p>
+                        <button onclick="openCalculator('iTunes')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h5>RAZER GOLD</h5>
+                        <p>Razer Gold Card / code</p>
+                        <button onclick="openCalculator('RAZER GOLD')">Get Quote</button>
+                    </div>
+                    
+                    <div class="gift-card-item">
+                        <div class="gift-card-logo">
+                            <i class="fab fa-google-play"></i>
+                        </div>
+                        <h5>Google Play</h5>
+                        <p>Google Play Gift Card</p>
+                        <button onclick="openCalculator('Google Play')">Get Quote</button>
+                    </div>
                 </div>
             </div>
-            
-            <!-- 最佳汇率卡片 -->
-            <div class="row mt-5">
-                <div class="col-md-8 offset-md-2">
-                    <div class="card-item text-center p-4" style="background-color: #e8f4fc;">
-                        <h3 class="mb-4">最佳汇率卡片</h3>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <i class="fab fa-apple card-icon"></i>
-                                    <h5>Apple Gift Card</h5>
+        </div>
+    </section>
+
+    <!-- High Rate Gift Cards and Calculator Combined Section (Side by Side) -->
+    <section id="rate-calculator" class="rate-calculator-section">
+        <div class="container">
+            <div class="row">
+                <!-- High Rate Gift Cards Table -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">High Rate Gift Cards</h2>
+                    <p class="section-subtitle">CardOS™ calculator gets better gift card rates, repeat more profits.</p>
+                    
+                    <div class="rate-table-container">
+                        <table class="rate-table">
+                            <thead>
+                                <tr>
+                                    <th>Gift Card Name</th>
+                                    <th>Subcategory</th>
+                                    <th>Rate Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="card-name">Truves</td>
+                                    <td>ISO Purchase (Truves)</td>
+                                    <td>M 1914</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">Truves</td>
+                                    <td>ISO Purchase (Truves)</td>
+                                    <td>M 1170</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">HIGHER</td>
+                                    <td>[100-300] USD (HIGHER)</td>
+                                    <td>M 1510</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">eBay</td>
+                                    <td>[50-99] USD (eBay)</td>
+                                    <td>M 1600</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">GREEN</td>
+                                    <td>UK (Google Play)</td>
+                                    <td>M 1703</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">Truves</td>
+                                    <td>AUD 500 (Truves)</td>
+                                    <td>M 1655</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">GREEN</td>
+                                    <td>Stulank (Google Play)</td>
+                                    <td>M 2531</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">BIG</td>
+                                    <td>BNL (Smart Gold)</td>
+                                    <td>M 175</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">GREEN</td>
+                                    <td>HSD (Google Play)</td>
+                                    <td>M 414</td>
+                                </tr>
+                                <tr>
+                                    <td class="card-name">Truves</td>
+                                    <td>JPY 10000*90000 (Truves)</td>
+                                    <td>M 7.3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Rate Calculator -->
+                <div class="col-lg-6">
+                    <div class="calculator-container">
+                        <h3 class="calculator-title">Gift Card Rate Calculator</h3>
+                        <p class="calculator-subtitle">Easily select card type and enter amount to get rates from Centrix™. For reference only.</p>
+                        
+                        <div class="calculator-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardCategory">Gift Card Category</label>
+                                    <select id="cardCategory" onchange="updateSubcategories()">
+                                        <option value="">Select gift card category</option>
+                                        <option value="Truves">Truves</option>
+                                        <option value="HIGHER">HIGHER</option>
+                                        <option value="eBay">eBay</option>
+                                        <option value="GREEN">GREEN (Google Play)</option>
+                                        <option value="BIG">BIG (Smart Gold)</option>
+                                        <option value="STEAM">STEAM</option>
+                                        <option value="XBOX">XBOX</option>
+                                        <option value="iTunes">iTunes</option>
+                                        <option value="RAZER GOLD">RAZER GOLD</option>
+                                        <option value="Google Play">Google Play</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardSubcategory">Subcategory</label>
+                                    <select id="cardSubcategory">
+                                        <option value="">Select subcategory</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <i class="fas fa-font card-icon"></i>
-                                    <h5>Font Tester</h5>
+                            
+                            <div class="form-group">
+                                <label for="cardAmount">Gift Card Amount ($)</label>
+                                <input type="number" id="cardAmount" placeholder="e.g.: 100" min="1" max="10000">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="paymentType">Payment Method</label>
+                                    <select id="paymentType">
+                                        <option value="direct">Direct Rate</option>
+                                        <option value="standard">Standard</option>
+                                        <option value="express">Express</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exchangeRate">Rate Type</label>
+                                    <select id="exchangeRate">
+                                        <option value="market">Market Rate</option>
+                                        <option value="premium">Premium Rate</option>
+                                        <option value="vip">VIP Rate</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <i class="fab fa-steam card-icon"></i>
-                                    <h5>STEAM</h5>
-                                </div>
-                            </div>
+                            
+                            <button class="trade-now-btn" onclick="calculateRate()">Calculate Rate</button>
                         </div>
-                        <div class="mt-4">
-                            <h4 class="text-primary">最高可达 <span class="fw-bold">3.2%</span> 额外汇率</h4>
-                            <p class="mt-2">我们的高级定价算法确保您获得最高的礼品卡汇率。我们持续监控市场状况，提供有竞争力的汇率。</p>
+                        
+                        <div id="resultContainer" class="calculator-result">
+                            <h4 class="result-title">Calculation Result</h4>
+                            <p>According to your selection, the calculated rate is as follows:</p>
+                            <div class="result-value" id="resultValue">₦0.00</div>
+                            <p>This is your estimated amount (Naira)</p>
+                            <button class="trade-now-btn" onclick="startTrade()">Trade Now</button>
                         </div>
                     </div>
                 </div>
@@ -569,11 +1056,11 @@
         </div>
     </section>
 
-    <!-- 为什么选择我们 -->
-    <section id="about" class="py-5 bg-light">
+    <!-- Our Services Section -->
+    <section id="services" class="services-section">
         <div class="container">
-            <h2 class="section-title text-center">为什么选择 IT?</h2>
-            <p class="text-center mb-5">我们提供武汉最可靠、最高效的礼品卡交易服务</p>
+            <h2 class="section-title">Why Choose IT?</h2>
+            <p class="section-subtitle">We provide the most reliable and efficient gift card trading service in Wuhan</p>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -581,8 +1068,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h4>闪电般快速</h4>
-                        <p>几分钟内即可兑换现金。我们的自动化系统即时处理交易。</p>
+                        <h4>Lightning Fast</h4>
+                        <p>Get cash within minutes. Our automated system processes transactions instantly.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -590,8 +1077,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h4>100% 安全</h4>
-                        <p>银行级安全确保您的交易安全，您的数据受到保护。</p>
+                        <h4>100% Secure</h4>
+                        <p>Bank-level security ensures your transactions are safe and your data is protected.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -599,8 +1086,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-headset"></i>
                         </div>
-                        <h4>24/7 支持</h4>
-                        <p>我们的客服团队全天候为您服务，解答任何问题。</p>
+                        <h4>24/7 Support</h4>
+                        <p>Our customer support team is available around the clock to help you with any questions.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -608,19 +1095,19 @@
                         <div class="feature-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <h4>最佳汇率</h4>
-                        <p>实时市场汇率，即时报价，无隐藏费用。</p>
+                        <h4>Best Rates</h4>
+                        <p>Real-time market rates, instant quotes, no hidden fees.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 我们的团队 -->
-    <section id="team" class="py-5">
+    <!-- Our Team Section -->
+    <section id="team" class="team-section">
         <div class="container">
-            <h2 class="section-title text-center">我们的团队</h2>
-            <p class="text-center mb-5">认识我们的专业交易团队</p>
+            <h2 class="section-title">Our Team</h2>
+            <p class="section-subtitle">Meet our professional trading team</p>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -629,7 +1116,8 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h4>Trader_Ki</h4>
-                        <p class="text-muted">经理</p>
+                        <p class="text-muted">Manager</p>
+                        <a href="https://wa.me/8615391667580?text=I want to contact Trader_Ki manager" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Contact Manager</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -638,7 +1126,8 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h4>Trader_Xing</h4>
-                        <p class="text-muted">经理</p>
+                        <p class="text-muted">Manager</p>
+                        <a href="https://wa.me/8615391667580?text=I want to contact Trader_Xing manager" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Contact Manager</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -647,7 +1136,8 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h4>Trader_Tian</h4>
-                        <p class="text-muted">经理</p>
+                        <p class="text-muted">Manager</p>
+                        <a href="https://wa.me/8615391667580?text=I want to contact Trader_Tian manager" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Contact Manager</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -656,53 +1146,57 @@
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h4>Trader_Zhe</h4>
-                        <p class="text-muted">经理</p>
+                        <p class="text-muted">Manager</p>
+                        <a href="https://wa.me/8615391667580?text=I want to contact Trader_Zhe manager" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Contact Manager</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 客户评价 -->
-    <section id="testimonials" class="py-5 bg-light">
+    <!-- Customer Reviews Section -->
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="section-title text-center">客户评价</h2>
-            <p class="text-center mb-5">不要只听我们说 - 听听我们满意客户的声音</p>
+            <h2 class="section-title">Customer Reviews</h2>
+            <p class="section-subtitle">Don't just take our word for it - hear from our satisfied customers</p>
             
             <div class="row mb-5">
                 <div class="col-lg-8">
                     <div class="testimonial-card">
-                        <h5 class="mb-3">交易详情</h5>
-                        <p>来自我们客户的真实交易截图</p>
+                        <h5 class="mb-3">Transaction Details</h5>
+                        <p>Real transaction screenshots from our customers</p>
                         
                         <div class="transaction-details mt-4">
-                            <h6 class="mb-3">最新交易</h6>
+                            <h6 class="mb-3">Latest Transactions</h6>
                             <div class="transaction-item">
-                                <strong>USDT 9000$</strong> - 已完成
+                                <strong>USDT 9000$</strong> - Completed
                             </div>
                             <div class="transaction-item">
-                                <strong>DOIN</strong> - 处理中
+                                <strong>DOIN</strong> - Processing
                             </div>
                             <div class="transaction-item">
-                                <strong>ETH 交易</strong> - 已完成
+                                <strong>ETH Transaction</strong> - Completed
                             </div>
                             <div class="transaction-item">
-                                <strong>MED MORE</strong> - 已完成
+                                <strong>MED MORE</strong> - Completed
                             </div>
                             <div class="transaction-item">
-                                <strong>GOOD RATE</strong> - 高汇率交易
+                                <strong>GOOD RATE</strong> - High Rate Transaction
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="https://wa.me/8615391667580?text=I want to see more transaction cases" target="_blank" class="btn btn-primary">View More Cases</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="testimonial-card h-100">
-                        <h5 class="mb-3">交易 #6</h5>
-                        <p class="mb-4">自动播放交易详情</p>
+                        <h5 class="mb-3">Rate Advantage</h5>
+                        <p class="mb-4">We offer the most competitive rates in the market</p>
                         <div class="text-center">
-                            <i class="fas fa-play-circle" style="font-size: 5rem; color: var(--secondary-color);"></i>
-                            <p class="mt-3">点击查看实时交易流程</p>
-                            <button class="btn btn-primary mt-2">观看演示</button>
+                            <i class="fas fa-chart-line" style="font-size: 5rem; color: var(--secondary-color);"></i>
+                            <p class="mt-3">Daily updated rates to ensure the best trading price</p>
+                            <button class="btn btn-primary mt-2" onclick="openCalculator('Rate Check')">Check Today's Rates</button>
                         </div>
                     </div>
                 </div>
@@ -711,191 +1205,482 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <p>"非常快速和高效的服务！我在几分钟内就把我的Steam礼品卡兑换成了现金。强烈推荐！"</p>
+                        <p>"Very fast and efficient service! I exchanged my Steam gift card for cash within minutes. Highly recommended!"</p>
                         <div class="d-flex align-items-center mt-3">
                             <div class="me-3">
                                 <i class="fas fa-user-circle fa-2x text-secondary"></i>
                             </div>
                             <div>
-                                <h6 class="mb-0">张先生</h6>
-                                <small class="text-muted">Steam 交易客户</small>
+                                <h6 class="mb-0">Mr. Zhang</h6>
+                                <small class="text-muted">Steam Trading Customer</small>
                             </div>
                         </div>
+                        <button class="btn btn-outline-primary btn-sm mt-3" onclick="openCalculator('Steam')">I Want to Trade</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <p>"这是我用过的最好的礼品卡交易平台。汇率非常有竞争力，整个过程非常简单。"</p>
+                        <p>"This is the best gift card trading platform I've used. The rates are very competitive and the process is simple."</p>
                         <div class="d-flex align-items-center mt-3">
                             <div class="me-3">
                                 <i class="fas fa-user-circle fa-2x text-secondary"></i>
                             </div>
                             <div>
-                                <h6 class="mb-0">王女士</h6>
-                                <small class="text-muted">iTunes 交易客户</small>
+                                <h6 class="mb-0">Ms. Wang</h6>
+                                <small class="text-muted">iTunes Trading Customer</small>
                             </div>
                         </div>
+                        <button class="btn btn-outline-primary btn-sm mt-3" onclick="openCalculator('iTunes')">I Want to Trade</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <p>"24/7客户支持太棒了！我凌晨有问题，他们仍然迅速回复并帮助我解决了问题。"</p>
+                        <p>"24/7 customer support is amazing! I had a problem late at night and they still responded quickly and helped me solve it."</p>
                         <div class="d-flex align-items-center mt-3">
                             <div class="me-3">
                                 <i class="fas fa-user-circle fa-2x text-secondary"></i>
                             </div>
                             <div>
-                                <h6 class="mb-0">李先生</h6>
-                                <small class="text-muted">Xbox 交易客户</small>
+                                <h6 class="mb-0">Mr. Li</h6>
+                                <small class="text-muted">Xbox Trading Customer</small>
                             </div>
                         </div>
+                        <button class="btn btn-outline-primary btn-sm mt-3" onclick="openCalculator('XBOX')">I Want to Trade</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 如何交易 -->
-    <section id="services" class="py-5">
+    <!-- How to Trade Section -->
+    <section id="how-to" class="how-to-section">
         <div class="container">
-            <h2 class="section-title text-center">如何在 IT 交易礼品卡?</h2>
+            <h2 class="section-title">How to Trade Gift Cards on IT?</h2>
+            <p class="section-subtitle">Three simple steps to complete your gift card trade</p>
             
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="card-item p-4">
-                        <h4 class="mb-4">轻松获取折扣汇率和安全支付</h4>
-                        <div class="mb-4">
-                            <h5>价格如何？哪个平台最好？</h5>
-                            <p>我们的高级定价算法确保您获得市场最高汇率。我们持续监控市场状况，提供有竞争力的汇率。</p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card-item">
+                        <div class="card-icon">
+                            <i class="fas fa-search"></i>
                         </div>
-                        <div class="mb-4">
-                            <h5>可以交易哪些类型的卡？</h5>
-                            <p>我们支持各种品牌的礼品卡，包括Steam、Xbox、iTunes、Razer Gold等。查看上面的完整列表。</p>
-                        </div>
-                        <a href="#cards" class="btn btn-primary">查看所有支持的礼品卡</a>
+                        <h4>Check Rate</h4>
+                        <p>Use our calculator to check the current best rate, or contact customer service directly for a quote.</p>
+                        <button class="btn btn-outline-primary mt-3" onclick="openCalculator('Rate Check')">Check Rate</button>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card-item p-4 mt-4 mt-lg-0">
-                        <h4 class="mb-4">我们提供的服务</h4>
-                        <p class="mb-3">全面的礼品卡交易解决方案，满足您的所有需求</p>
-                        
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <h5 class="mb-0">礼品卡交易</h5>
-                                <p class="mb-0">最佳汇率，快速处理</p>
-                            </div>
+                <div class="col-lg-4">
+                    <div class="card-item">
+                        <div class="card-icon">
+                            <i class="fas fa-exchange-alt"></i>
                         </div>
-                        
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <h5 class="mb-0">24/7 在线服务</h5>
-                                <p class="mb-0">全天候支持，随时交易</p>
-                            </div>
+                        <h4>Submit Trade</h4>
+                        <p>After confirming the rate, submit your gift card information and our system will automatically process it.</p>
+                        <a href="https://wa.me/8615391667580?text=I want to submit a gift card trade" target="_blank" class="btn btn-outline-primary mt-3">Submit Trade</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-item">
+                        <div class="card-icon">
+                            <i class="fas fa-money-check-alt"></i>
                         </div>
-                        
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <h5 class="mb-0">安全支付</h5>
-                                <p class="mb-0">银行级安全，保障资金安全</p>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <div>
-                                <h5 class="mb-0">实时市场汇率</h5>
-                                <p class="mb-0">即时报价，无隐藏费用</p>
-                            </div>
-                        </div>
+                        <h4>Receive Payment</h4>
+                        <p>After the transaction is completed, you will receive payment immediately through your chosen payment method.</p>
+                        <button class="btn btn-outline-primary mt-3" onclick="openCalculator('Payment Method')">View Payment Methods</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 联系和页脚 -->
+    <!-- Footer Section -->
     <footer id="contact">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h4 class="mb-4">IT Gift Cards</h4>
-                    <p class="mb-4">武汉最大的礼品卡交易平台。以最佳汇率将您的礼品卡兑换成现金，闪电般快速处理。</p>
-                    <a href="#home" class="btn btn-primary mb-3">立即交易</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-4">快速链接</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#about">关于我们</a></li>
-                        <li class="mb-2"><a href="#services">服务</a></li>
-                        <li class="mb-2"><a href="#team">团队</a></li>
-                        <li class="mb-2"><a href="#testimonials">客户评价</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-4">有用的链接</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#cards">iTunes 礼品卡</a></li>
-                        <li class="mb-2"><a href="#cards">Steam 钱包</a></li>
-                        <li class="mb-2"><a href="#cards">Xbox 礼品卡</a></li>
-                        <li class="mb-2"><a href="#cards">Razer Gold 卡</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-4">联系我们</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <i class="fas fa-phone me-2"></i>
-                            <a href="tel:+8615391667580">+86 15391667580</a>
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-phone me-2"></i>
-                            <span>即将推出</span>
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:info@itgiftcards.com">info@itgiftcards.com</a>
-                        </li>
-                    </ul>
-                    
-                    <h6 class="mt-4 mb-3">订阅新闻通讯</h6>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="您的邮箱地址" class="form-control">
-                        <button type="submit">订阅</button>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>IT Gift Cards</h4>
+                    <p>Largest gift card trading platform in Wuhan. Exchange your gift cards for cash at the best rates with lightning-fast processing.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +86 15391667580</p>
+                        <p><i class="fas fa-envelope"></i> info@itgiftcards.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Wuhan Gift Card Trading Center</p>
                     </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#top-banner">Home</a></li>
+                        <li><a href="#gift-cards">Gift Cards</a></li>
+                        <li><a href="#rate-calculator">Rate Calculator</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Supported Cards</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('STEAM')">STEAM Gift Card</a></li>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('XBOX')">XBOX Gift Card</a></li>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('iTunes')">iTunes Gift Card</a></li>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('Google Play')">Google Play Gift Card</a></li>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('RAZER GOLD')">RAZER GOLD Card</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Trading Services</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)">Fast Trading</a></li>
+                        <li><a href="javascript:void(0)">Secure Payment</a></li>
+                        <li><a href="javascript:void(0)">24/7 Customer Support</a></li>
+                        <li><a href="javascript:void(0)" onclick="openCalculator('Rate Check')">Rate Check</a></li>
+                    </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 IT Gift Cards 交易平台。保留所有权利。</p>
+                <p>&copy; 2023 IT Gift Cards Trading Platform. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Rate Search Results Modal -->
+    <div class="modal fade rate-modal" id="rateSearchModal" tabindex="-1" aria-labelledby="rateSearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rateSearchModalLabel">Rate Search Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="rate-result">
+                        <h4>Current Rate for</h4>
+                        <div class="rate-card-name" id="searchResultCardName">STEAM</div>
+                        <div class="rate-card-type" id="searchResultCardType">Steam Card / eCode</div>
+                        <div class="rate-value" id="searchResultRate">₦1,350,000</div>
+                        <p>This is the current exchange rate in Naira</p>
+                        <button class="trade-now-btn mt-4" onclick="startTradeFromSearch()">Trade Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 自动轮播控制
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化轮播
-            const myCarousel = document.querySelector('#giftCardCarousel');
-            const carousel = new bootstrap.Carousel(myCarousel, {
-                interval: 3000, // 3秒自动切换
-                wrap: true
-            });
+        // Subcategory data
+        const subcategories = {
+            'Truves': ['ISO Purchase (Truves)', 'AUD 500 (Truves)', 'JPY 10000*90000 (Truves)'],
+            'HIGHER': ['[100-300] USD (HIGHER)'],
+            'eBay': ['[50-99] USD (eBay)'],
+            'GREEN': ['UK (Google Play)', 'Stulank (Google Play)', 'HSD (Google Play)'],
+            'BIG': ['BNL (Smart Gold)'],
+            'STEAM': ['Steam Wallet Code', 'Steam Gift Card', 'Steam Game Activation Code'],
+            'XBOX': ['Xbox Gift Card', 'Xbox Game Pass', 'Xbox Game Code'],
+            'iTunes': ['iTunes Gift Card', 'App Store Credit', 'Apple Music Gift Card'],
+            'RAZER GOLD': ['Razer Gold Code', 'Razer Gold Gift Card'],
+            'Google Play': ['Google Play Gift Card', 'Google Play Credit']
+        };
+        
+        // Rate data (converted to Naira rates)
+        const rateData = {
+            'Truves': {
+                'ISO Purchase (Truves)': 1400,
+                'AUD 500 (Truves)': 1200,
+                'JPY 10000*90000 (Truves)': 900
+            },
+            'HIGHER': {
+                '[100-300] USD (HIGHER)': 1100
+            },
+            'eBay': {
+                '[50-99] USD (eBay)': 1150
+            },
+            'GREEN': {
+                'UK (Google Play)': 1250,
+                'Stulank (Google Play)': 1800,
+                'HSD (Google Play)': 300
+            },
+            'BIG': {
+                'BNL (Smart Gold)': 130
+            },
+            'STEAM': {
+                'Steam Wallet Code': 0.92,
+                'Steam Gift Card': 0.91,
+                'Steam Game Activation Code': 0.89
+            },
+            'XBOX': {
+                'Xbox Gift Card': 0.90,
+                'Xbox Game Pass': 0.88,
+                'Xbox Game Code': 0.85
+            },
+            'iTunes': {
+                'iTunes Gift Card': 0.94,
+                'App Store Credit': 0.93,
+                'Apple Music Gift Card': 0.91
+            },
+            'RAZER GOLD': {
+                'Razer Gold Code': 0.87,
+                'Razer Gold Gift Card': 0.86
+            },
+            'Google Play': {
+                'Google Play Gift Card': 0.89,
+                'Google Play Credit': 0.88
+            }
+        };
+        
+        // Card display information
+        const cardInfo = {
+            'STEAM': { name: 'STEAM', type: 'Steam Card / eCode', baseRate: 0.92 },
+            'XBOX': { name: 'XBOX', type: 'Xbox Physical Card', baseRate: 0.90 },
+            'iTunes': { name: 'iTunes', type: 'Apple Physical Card', baseRate: 0.94 },
+            'RAZER GOLD': { name: 'RAZER GOLD', type: 'Razer Gold Card / code', baseRate: 0.87 },
+            'Google Play': { name: 'Google Play', type: 'Google Play Gift Card', baseRate: 0.89 },
+            'Foot Locker': { name: 'Foot Locker', type: 'Foot Locker Gift Card', baseRate: 0.85 },
+            'GOLD': { name: 'GOLD', type: 'Gold Gift Card', baseRate: 0.82 },
+            'Font Tester': { name: 'Font Tester', type: 'Font Tester Card', baseRate: 0.80 },
+            'Apple Gift Card': { name: 'Apple Gift Card', type: 'Apple Physical Card', baseRate: 0.93 },
+            'Truves': { name: 'Truves', type: 'ISO Purchase Card', baseRate: 1400 },
+            'HIGHER': { name: 'HIGHER', type: 'High Value Card', baseRate: 1100 },
+            'eBay': { name: 'eBay', type: 'eBay Gift Card', baseRate: 1150 },
+            'GREEN': { name: 'GREEN', type: 'Google Play Card', baseRate: 1250 },
+            'BIG': { name: 'BIG', type: 'Smart Gold Card', baseRate: 130 }
+        };
+        
+        // USD to Naira exchange rate (1 USD ≈ 1500 NGN)
+        const usdToNairaRate = 1500;
+        
+        // Rate Search Modal
+        const rateSearchModal = new bootstrap.Modal(document.getElementById('rateSearchModal'));
+        let currentSearchCard = '';
+        
+        // Search function - shows only rate in modal
+        document.getElementById('searchButton').addEventListener('click', function() {
+            performSearch();
+        });
+        
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
             
-            // 平滑滚动到锚点
+            if (!query) {
+                alert('Please enter a gift card name or type to search');
+                return;
+            }
+            
+            // Find matching card
+            let matchedCard = null;
+            for (const cardKey in cardInfo) {
+                const card = cardInfo[cardKey];
+                if (card.name.toLowerCase().includes(query) || 
+                    card.type.toLowerCase().includes(query) ||
+                    cardKey.toLowerCase().includes(query)) {
+                    matchedCard = card;
+                    currentSearchCard = cardKey;
+                    break;
+                }
+            }
+            
+            if (matchedCard) {
+                // Calculate rate in Naira
+                let rateInNaira;
+                if (currentSearchCard === 'STEAM' || currentSearchCard === 'XBOX' || 
+                    currentSearchCard === 'iTunes' || currentSearchCard === 'RAZER GOLD' || 
+                    currentSearchCard === 'Google Play' || currentSearchCard === 'Foot Locker' ||
+                    currentSearchCard === 'GOLD' || currentSearchCard === 'Font Tester' ||
+                    currentSearchCard === 'Apple Gift Card') {
+                    // These are percentage rates, convert to Naira
+                    rateInNaira = matchedCard.baseRate * usdToNairaRate * 100; // For $100 card
+                } else {
+                    // These are fixed rates
+                    rateInNaira = matchedCard.baseRate * 100; // For $100 card
+                }
+                
+                // Format the rate
+                const formattedRate = '₦' + rateInNaira.toLocaleString('en-US', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+                
+                // Update modal content
+                document.getElementById('searchResultCardName').textContent = matchedCard.name;
+                document.getElementById('searchResultCardType').textContent = matchedCard.type;
+                document.getElementById('searchResultRate').textContent = formattedRate;
+                
+                // Show modal
+                rateSearchModal.show();
+            } else {
+                // Show default rate for unknown card
+                document.getElementById('searchResultCardName').textContent = 'Standard Gift Card';
+                document.getElementById('searchResultCardType').textContent = 'Generic Gift Card';
+                document.getElementById('searchResultRate').textContent = '₦1,200,000';
+                currentSearchCard = 'Standard';
+                
+                // Show modal
+                rateSearchModal.show();
+            }
+        }
+        
+        // Trade from search result
+        function startTradeFromSearch() {
+            const message = `I want to trade ${currentSearchCard} gift card based on the search result.`;
+            window.open(`https://wa.me/8615391667580?text=${encodeURIComponent(message)}`, '_blank');
+            rateSearchModal.hide();
+        }
+        
+        // Update subcategory options
+        function updateSubcategories() {
+            const category = document.getElementById('cardCategory').value;
+            const subcategorySelect = document.getElementById('cardSubcategory');
+            
+            // Clear existing options
+            subcategorySelect.innerHTML = '<option value="">Select subcategory</option>';
+            
+            // Add new options
+            if (category && subcategories[category]) {
+                subcategories[category].forEach(sub => {
+                    const option = document.createElement('option');
+                    option.value = sub;
+                    option.textContent = sub;
+                    subcategorySelect.appendChild(option);
+                });
+            }
+        }
+        
+        // Open calculator and pre-select card type
+        function openCalculator(cardType) {
+            // Scroll to calculator section
+            document.getElementById('rate-calculator').scrollIntoView({ behavior: 'smooth' });
+            
+            // Set card type
+            const categorySelect = document.getElementById('cardCategory');
+            for (let i = 0; i < categorySelect.options.length; i++) {
+                if (categorySelect.options[i].value === cardType) {
+                    categorySelect.selectedIndex = i;
+                    break;
+                }
+            }
+            
+            // Update subcategories
+            updateSubcategories();
+            
+            // Set default subcategory
+            const subcategorySelect = document.getElementById('cardSubcategory');
+            if (subcategorySelect.options.length > 1) {
+                subcategorySelect.selectedIndex = 1;
+            }
+        }
+        
+        // Calculate rate (returns Naira)
+        function calculateRate() {
+            const category = document.getElementById('cardCategory').value;
+            const subcategory = document.getElementById('cardSubcategory').value;
+            const amount = parseFloat(document.getElementById('cardAmount').value);
+            const paymentType = document.getElementById('paymentType').value;
+            const exchangeRate = document.getElementById('exchangeRate').value;
+            
+            // Validate input
+            if (!category || !subcategory) {
+                alert('Please select gift card category and subcategory');
+                return;
+            }
+            
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid gift card amount');
+                return;
+            }
+            
+            // Get base rate
+            let baseRate = 0;
+            if (rateData[category] && rateData[category][subcategory]) {
+                baseRate = rateData[category][subcategory];
+            } else {
+                // Default rate
+                baseRate = 0.85;
+            }
+            
+            // Adjust rate (based on payment method and rate type)
+            let adjustedRate = baseRate;
+            if (exchangeRate === 'premium') {
+                adjustedRate *= 1.05; // Premium rate increase 5%
+            } else if (exchangeRate === 'vip') {
+                adjustedRate *= 1.10; // VIP rate increase 10%
+            }
+            
+            if (paymentType === 'express') {
+                adjustedRate *= 0.98; // Express payment decrease 2%
+            }
+            
+            // Calculate final amount (Naira)
+            let finalAmount;
+            if (category === 'STEAM' || category === 'XBOX' || category === 'iTunes' || 
+                category === 'RAZER GOLD' || category === 'Google Play') {
+                // These are percentage rates, convert to USD then to Naira
+                finalAmount = amount * adjustedRate * usdToNairaRate;
+            } else {
+                // These are fixed rates, use directly (assuming already in Naira rate)
+                finalAmount = amount * adjustedRate;
+            }
+            
+            // Display result (Naira)
+            document.getElementById('resultValue').textContent = '₦' + finalAmount.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            document.getElementById('resultContainer').style.display = 'block';
+            
+            // Scroll to result
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Start trade
+        function startTrade() {
+            const category = document.getElementById('cardCategory').value;
+            const subcategory = document.getElementById('cardSubcategory').value;
+            const amount = document.getElementById('cardAmount').value;
+            const result = document.getElementById('resultValue').textContent;
+            
+            // Build message
+            let message = `I want to trade gift card:\n`;
+            message += `Card Type: ${category}\n`;
+            message += `Subcategory: ${subcategory}\n`;
+            if (amount) message += `Amount: $${amount}\n`;
+            message += `Estimated Amount: ${result} (Naira)\n`;
+            message += `Please provide detailed trading information.`;
+            
+            // Encode message
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/8615391667580?text=${encodedMessage}`, '_blank');
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize carousel
+            const carousel = document.querySelector('.gift-card-carousel');
+            
+            // Duplicate content for infinite scrolling effect
+            const originalContent = carousel.innerHTML;
+            carousel.innerHTML = originalContent + originalContent;
+            
+            // Smooth scroll navigation
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     
                     const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
+                    if (targetId === '#') return;
                     
                     const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
+                    if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
@@ -904,27 +1689,12 @@
                 });
             });
             
-            // 电话号码点击事件
+            // Phone number click event
             document.querySelectorAll('a[href^="tel:"]').forEach(link => {
                 link.addEventListener('click', function(e) {
-                    alert('正在拨打: ' + this.textContent);
+                    // In real environment, this would directly call
+                    console.log('Calling: ' + this.textContent);
                 });
-            });
-            
-            // 交易演示按钮
-            document.querySelector('.btn-primary.mt-2').addEventListener('click', function() {
-                alert('交易演示功能即将推出！');
-            });
-            
-            // 新闻通讯订阅
-            document.querySelector('.newsletter-form button').addEventListener('click', function() {
-                const emailInput = document.querySelector('.newsletter-form input');
-                if(emailInput.value && emailInput.value.includes('@')) {
-                    alert('感谢订阅！我们将向 ' + emailInput.value + ' 发送最新资讯。');
-                    emailInput.value = '';
-                } else {
-                    alert('请输入有效的邮箱地址');
-                }
             });
         });
     </script>
