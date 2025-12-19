@@ -3,869 +3,760 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GiftCardPro - Premium Gift Card Trading Platform</title>
+    <title>GiftJoy - Gift Card Trading Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #1a2980;
-            --secondary-color: #26d0ce;
-            --accent-color: #ff6b6b;
-            --light-color: #f8f9fa;
-            --dark-color: #2c3e50;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f8fafc;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --bg-1: #f0f7ff;
+            --bg-2: #f0fff7;
+            --bg-3: #fff7f0;
+            --bg-4: #f7f0ff;
         }
         
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #f5f7fb;
+            color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
-            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        /* 优化移动端字体大小 */
-        @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-            }
-            
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.6rem; }
-            h3 { font-size: 1.4rem; }
-            h4 { font-size: 1.2rem; }
-            h5 { font-size: 1.1rem; }
-            h6 { font-size: 1rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
         }
         
-        @media (max-width: 576px) {
-            body {
-                font-size: 14px;
-            }
-            
-            h1 { font-size: 1.7rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.3rem; }
-            h4 { font-size: 1.1rem; }
-            h5 { font-size: 1rem; }
-            h6 { font-size: 0.9rem; }
+        section {
+            padding: 60px 0;
+            margin-bottom: 30px;
         }
         
-        /* Top Navigation */
-        .navbar {
-            padding: 15px 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary-color) !important;
-            letter-spacing: -0.5px;
-        }
-        
-        .navbar-brand span {
-            color: var(--secondary-color);
-        }
-        
-        /* Hero Banner - 恢复最初版本 */
-        .hero-banner {
-            background: linear-gradient(135deg, #1a2980, #26d0ce);
-            color: white;
-            padding: 100px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-banner::before {
-            content: '';
-            position: absolute;
+        /* Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
+            z-index: 100;
+            padding: 0 16px;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--primary);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 99;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+        }
+        
+        .mobile-menu-links li {
+            margin-bottom: 16px;
+        }
+        
+        .mobile-menu-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 18px;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        /* First Section: Company Introduction */
+        .intro-section {
+            background-color: var(--bg-1);
+            padding: 60px 0 80px;
             text-align: center;
         }
         
-        .hero-content h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+        .intro-content {
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
+            margin: 0 auto;
         }
         
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
+        .intro-section h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.3;
         }
         
-        .hero-btn {
-            padding: 15px 35px;
-            border-radius: 50px;
+        .intro-section .subtitle {
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 24px;
             font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
         
-        .hero-btn-primary {
-            background-color: white;
-            color: var(--secondary-color);
-            border: none;
+        .intro-section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--gray);
+            line-height: 1.7;
         }
         
-        .hero-btn-primary:hover {
-            background-color: var(--light-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            color: var(--secondary-color);
-        }
-        
-        .hero-btn-outline {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .hero-btn-outline:hover {
-            background-color: white;
-            color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .hero-stats {
+        .intro-stats {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 40px;
         }
         
         .stat-item {
-            text-align: center;
-            min-width: 150px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 140px;
+            flex: 1;
+            max-width: 160px;
         }
         
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 5px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
         }
         
         .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 14px;
+            color: var(--gray);
         }
         
-        /* 移动端优化 */
-        @media (max-width: 768px) {
-            .hero-banner {
-                padding: 80px 0 50px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .hero-btn {
-                width: 80%;
-                max-width: 300px;
-            }
-            
-            .hero-stats {
-                gap: 30px;
-            }
-            
-            .stat-item {
-                min-width: 120px;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
+        /* Second Section: Trading Experts */
+        .traders-section {
+            background-color: var(--bg-2);
         }
         
-        @media (max-width: 576px) {
-            .hero-banner {
-                padding: 70px 0 40px;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
-            
-            .hero-btn {
-                width: 90%;
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-            
-            .hero-stats {
-                gap: 20px;
-            }
-            
-            .stat-item {
-                min-width: 100px;
-            }
-            
-            .stat-number {
-                font-size: 1.8rem;
-            }
-        }
-        
-        /* Section Common Styles */
         .section-title {
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
             text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.3;
         }
         
         .section-subtitle {
             text-align: center;
-            color: #666;
-            margin-bottom: 50px;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
         }
         
-        /* Gift Card Slider Section - 手机上可滑动 */
-        .giftcard-section {
-            padding: 80px 0;
-            background-color: white;
+        .traders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
         
-        .giftcard-slider-container {
+        .trader-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .trader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .trader-avatar {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+        }
+        
+        .trader-info {
+            padding: 24px;
+        }
+        
+        .trader-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .trader-position {
+            color: var(--secondary);
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .trader-contact {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 15px;
+        }
+        
+        .trader-contact:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+        
+        /* Third Section: Supported Gift Cards - OPTIMIZED FOR SMOOTH SCROLLING */
+        .giftcards-section {
+            background-color: var(--bg-3);
+            padding: 60px 0;
+        }
+        
+        .giftcards-slider-container {
             position: relative;
             width: 100%;
             overflow: hidden;
-            padding: 10px 0 40px;
+            padding: 0 8px;
         }
         
-        .giftcard-track {
+        .giftcards-slider {
             display: flex;
-            transition: transform 0.3s ease;
-            padding: 10px 5px;
+            gap: 16px;
+            padding: 10px 0 30px;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 16px;
+            padding-left: 8px;
+            padding-right: 8px;
             cursor: grab;
             user-select: none;
         }
         
-        .giftcard-track:active {
+        /* Active state for dragging */
+        .giftcards-slider:active {
             cursor: grabbing;
+        }
+        
+        /* Hide scrollbar but keep scrollable */
+        .giftcards-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
         
         .giftcard-item {
             flex: 0 0 auto;
-            width: 260px;
-            margin: 0 15px;
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
+            width: 240px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            scroll-snap-align: start;
         }
         
-        .giftcard-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        .giftcard-item:active {
+            transform: scale(0.98);
         }
         
         .giftcard-logo {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-            height: 70px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .giftcard-item h5 {
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-        
-        .giftcard-item p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            min-height: 40px;
-        }
-        
-        .giftcard-item button {
-            background-color: var(--secondary-color);
+            font-size: 48px;
             color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 180px;
         }
         
-        .giftcard-item button:hover {
-            background-color: #1a8cff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(38, 208, 206, 0.3);
+        .steam-logo {
+            background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
         }
         
-        /* 移除左右按钮，只保留滑动指示点 */
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+        .xbox-logo {
+            background: linear-gradient(135deg, #107c10 0%, #0e5a0e 100%);
         }
         
-        .slider-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin: 0 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .itunes-logo {
+            background: linear-gradient(135deg, #fa243c 0%, #d11a2a 100%);
         }
         
-        .slider-dot.active {
-            background-color: var(--secondary-color);
-            transform: scale(1.2);
+        .google-logo {
+            background: linear-gradient(135deg, #4285f4 0%, #0d47a1 100%);
         }
         
-        /* Services Section */
-        .services-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
+        .razer-logo {
+            background: linear-gradient(135deg, #44d62c 0%, #2ea81c 100%);
         }
         
-        .service-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 35px 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-top: 4px solid var(--secondary-color);
-            height: 100%;
-            transition: all 0.3s ease;
+        .amazon-logo {
+            background: linear-gradient(135deg, #ff9900 0%, #e68900 100%);
         }
         
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .service-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-        
-        .service-card p {
-            color: #666;
-            line-height: 1.7;
-        }
-        
-        /* Team Section - 3个客服，手机上横向滑动 */
-        .team-section {
-            padding: 80px 0;
-            background-color: white;
-            overflow: hidden;
-        }
-        
-        .team-slider-container {
-            position: relative;
-            width: 100%;
-            overflow-x: auto;
-            padding: 10px 0 30px;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .team-slider-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .team-slider-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .team-slider-container::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 10px;
-        }
-        
-        .team-track {
-            display: flex;
-            padding: 10px 5px;
-            min-width: min-content;
-        }
-        
-        .team-member {
-            flex: 0 0 auto;
-            width: 300px;
-            margin: 0 15px;
+        .giftcard-info {
+            padding: 20px;
             text-align: center;
-            background-color: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
         }
         
-        .team-member:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
-        
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .team-member h4 {
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-        
-        .team-member p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        
-        .team-member .contact-btn {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 25px;
+        .giftcard-name {
+            font-size: 18px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .giftcard-action {
             display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 15px;
         }
         
-        .team-member .contact-btn:hover {
-            background-color: #1a8cff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(38, 208, 206, 0.3);
+        .giftcard-action:hover {
+            background: var(--primary-dark);
+            color: white;
         }
         
-        /* Testimonials Section */
+        /* Fourth Section: Why Choose Us */
+        .features-section {
+            background-color: var(--bg-4);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .feature-desc {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        /* Fifth Section: Testimonials */
         .testimonials-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
+            background-color: var(--bg-1);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
         
         .testimonial-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-left: 4px solid var(--secondary-color);
-            height: 100%;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
         }
         
         .testimonial-text {
             font-style: italic;
-            color: #555;
             margin-bottom: 20px;
-            line-height: 1.7;
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 15px;
         }
         
-        .customer-info {
+        .testimonial-author {
             display: flex;
             align-items: center;
         }
         
-        .customer-avatar {
+        .author-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: var(--light-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-        
-        .customer-details h5 {
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-        }
-        
-        .customer-details p {
-            color: #888;
-            font-size: 0.9rem;
-        }
-        
-        /* How It Works Section */
-        .howto-section {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .step-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 35px 25px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .step-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-            border-color: var(--secondary-color);
-        }
-        
-        .step-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 25px;
+            font-size: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
         
-        .step-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
         
-        .step-card p {
-            color: #666;
-            line-height: 1.7;
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background: var(--dark);
             color: white;
-            padding: 70px 0 30px;
+            padding: 50px 0 24px;
         }
         
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
             margin-bottom: 30px;
         }
         
-        .footer-column h4 {
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            font-weight: 700;
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
         }
         
-        .footer-column ul {
+        .footer-links {
             list-style: none;
-            padding: 0;
         }
         
-        .footer-column ul li {
+        .footer-links li {
             margin-bottom: 12px;
         }
         
-        .footer-column ul li a {
-            color: #ddd;
+        .footer-links a {
+            color: #b0b7c3;
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
+            transition: color 0.3s;
+            font-size: 14px;
         }
         
-        .footer-column ul li a:hover {
+        .footer-links a:hover {
             color: white;
-            padding-left: 5px;
         }
         
         .contact-info {
-            margin-top: 20px;
+            margin-top: 16px;
         }
         
         .contact-info p {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            color: #b0b7c3;
             display: flex;
             align-items: center;
-            font-size: 0.95rem;
+            font-size: 14px;
         }
         
         .contact-info i {
-            margin-right: 12px;
-            width: 20px;
-            color: var(--secondary-color);
-        }
-        
-        .social-links {
-            display: flex;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-right: 10px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
+            color: var(--secondary);
+            width: 20px;
+            flex-shrink: 0;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 24px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
+            color: #b0b7c3;
+            font-size: 13px;
         }
         
-        /* Mobile Responsive Adjustments */
+        /* Responsive Design */
         @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+            
+            .intro-section {
+                padding: 40px 0 60px;
+            }
+            
+            .intro-section h1 {
+                font-size: 24px;
+            }
+            
+            .intro-section .subtitle {
+                font-size: 16px;
+            }
+            
             .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .section-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 40px;
-            }
-            
-            .giftcard-item {
-                width: 240px;
-                margin: 0 10px;
-            }
-            
-            .team-member {
-                width: 280px;
-                margin: 0 10px;
-            }
-            
-            .service-card, .step-card, .testimonial-card {
-                padding: 25px 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .section-title {
-                font-size: 1.6rem;
+                font-size: 22px;
                 margin-bottom: 30px;
             }
             
             .section-subtitle {
-                font-size: 1rem;
                 margin-bottom: 30px;
             }
             
-            .giftcard-section, .services-section, .team-section, 
-            .testimonials-section, .howto-section {
-                padding: 60px 0;
+            .stat-item {
+                min-width: 120px;
+                padding: 16px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
             }
             
             .giftcard-item {
                 width: 220px;
-                padding: 20px 15px;
+            }
+            
+            .traders-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .trader-avatar {
+                height: 140px;
+            }
+            
+            .giftcards-slider {
+                scroll-snap-type: x mandatory;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .intro-section h1 {
+                font-size: 22px;
+            }
+            
+            .intro-stats {
+                gap: 12px;
+            }
+            
+            .stat-item {
+                min-width: calc(50% - 12px);
+                max-width: calc(50% - 12px);
+            }
+            
+            .giftcard-item {
+                width: 200px;
             }
             
             .giftcard-logo {
-                font-size: 3rem;
-                height: 60px;
+                height: 100px;
+                font-size: 40px;
             }
             
-            .giftcard-item h5 {
-                font-size: 1.2rem;
+            .giftcards-slider {
+                scroll-snap-type: x mandatory;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .intro-section h1 {
+                font-size: 20px;
             }
             
-            .team-member {
-                width: 260px;
-                padding: 25px 20px;
-            }
-            
-            .team-avatar {
-                width: 90px;
-                height: 90px;
-                font-size: 2.2rem;
-            }
-            
-            footer {
-                padding: 50px 0 25px;
-            }
-            
-            .footer-column {
+            .stat-item {
                 min-width: 100%;
+                max-width: 100%;
+            }
+            
+            .giftcard-item {
+                width: 180px;
+            }
+            
+            .giftcards-slider {
+                scroll-snap-type: x mandatory;
+            }
+        }
+        
+        /* Landscape orientation */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .intro-section, .traders-section, .giftcards-section, .features-section, .testimonials-section {
+                padding: 30px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 20px;
+            }
+            
+            .trader-avatar {
+                height: 120px;
+            }
+            
+            .giftcard-item {
+                width: 200px;
+            }
+            
+            .giftcard-logo {
+                height: 90px;
+            }
+        }
+        
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .traders-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .giftcard-item {
+                width: 220px;
+            }
+        }
+        
+        /* High DPI screens optimization */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .giftcards-slider {
+                -webkit-overflow-scrolling: touch;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span>GiftCard</span>Pro
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#giftcards">Gift Cards</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#team">Our Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#howto">How It Works</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary" href="tel:+8615391667580">📞 +86 15391667580</a>
-                    </li>
-                </ul>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                Gift<span>Joy</span>
             </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </nav>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-menu-links">
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#traders">Trading Experts</a></li>
+                <li><a href="#giftcards">Gift Cards</a></li>
+                <li><a href="#features">Why Choose Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="https://wellxb.com/ssiqia" target="_blank">Start Trading</a></li>
+            </ul>
+        </div>
+    </header>
 
-    <!-- Hero Banner - 恢复最初版本，无汇率相关内容 -->
-    <section id="home" class="hero-banner">
+    <!-- First Section: Company Introduction -->
+    <section id="intro" class="intro-section">
         <div class="container">
-            <div class="hero-content">
-                <h1>Trade Your Gift Cards Instantly</h1>
-                <p>GiftCardPro offers the fastest and most secure way to exchange your gift cards for cash. Join thousands of satisfied customers worldwide.</p>
+            <div class="intro-content">
+                <h1>GiftJoy - Professional Gift Card Trading</h1>
+                <div class="subtitle">Global Leading Gift Card Trading Platform</div>
+                <p>We are a professional gift card trading company dedicated to providing users with the fastest, most secure, and convenient gift card cash exchange service. Whether you have Steam, Xbox, iTunes, Google Play, or other brand gift cards, we can complete the transaction for you within minutes.</p>
+                <p>With years of industry experience, we have established a globally leading automated trading system to ensure every transaction is safe and reliable. Join GiftJoy and enjoy professional gift card trading services with thousands of satisfied customers worldwide.</p>
                 
-                <div class="hero-buttons">
-                    <a href="#giftcards" class="hero-btn hero-btn-primary">Start Trading Now</a>
-                    <a href="#team" class="hero-btn hero-btn-outline">Contact Our Team</a>
-                </div>
-                
-                <div class="hero-stats">
+                <div class="intro-stats">
                     <div class="stat-item">
                         <div class="stat-number">1000+</div>
                         <div class="stat-label">Satisfied Customers</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">50,000+</div>
-                        <div class="stat-label">Cards Traded</div>
+                        <div class="stat-label">Transactions</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">5</div>
+                        <div class="stat-number">5+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat-item">
@@ -877,176 +768,215 @@
         </div>
     </section>
 
-    <!-- Gift Card Slider Section - 手机上可滑动 -->
-    <section id="giftcards" class="giftcard-section">
+    <!-- Second Section: Trading Experts -->
+    <section id="traders" class="traders-section">
         <div class="container">
-            <h2 class="section-title">Supported Gift Cards</h2>
-            <p class="section-subtitle">Trade your gift cards from these popular brands instantly</p>
+            <h2 class="section-title">Our Trading Expert Team</h2>
+            <p class="section-subtitle">Meet our professional gift card trading expert team, ready to provide you with the highest quality service</p>
             
-            <div class="giftcard-slider-container">
-                <div class="giftcard-track" id="giftcardTrack">
-                    <!-- Gift cards will be inserted here by JavaScript -->
+            <div class="traders-grid">
+                <div class="trader-card">
+                    <!-- Steam style avatar for Carter -->
+                    <div class="trader-avatar" style="background: linear-gradient(135deg, #1b2838 0%, #00adee 100%);">
+                        <i class="fab fa-steam" style="font-size: 70px;"></i>
+                    </div>
+                    <div class="trader-info">
+                        <h3 class="trader-name">Carter</h3>
+                        <div class="trader-position">Senior Trading Manager</div>
+                        <a href="https://wellxb.com/siqian" class="trader-contact" target="_blank">Contact on WhatsApp</a>
+                    </div>
                 </div>
                 
-                <div class="slider-dots" id="sliderDots">
-                    <!-- Dots will be inserted here by JavaScript -->
+                <div class="trader-card">
+                    <!-- Xbox style avatar for Trader_Xing -->
+                    <div class="trader-avatar" style="background: linear-gradient(135deg, #107c10 0%, #9bf00b 100%);">
+                        <i class="fab fa-xbox" style="font-size: 70px;"></i>
+                    </div>
+                    <div class="trader-info">
+                        <h3 class="trader-name">Hardy</h3>
+                        <div class="trader-position">Trading Operations Director</div>
+                        <a href="https://wellxb.com/ssiqia" class="trader-contact" target="_blank">Contact on WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="trader-card">
+                    <!-- Gift style avatar for Trader_Tian -->
+                    <div class="trader-avatar" style="background: linear-gradient(135deg, #fa243c 0%, #4285f4 100%);">
+                        <i class="fas fa-gift" style="font-size: 70px;"></i>
+                    </div>
+                    <div class="trader-info">
+                        <h3 class="trader-name">Allen</h3>
+                        <div class="trader-position">Client Relations Manager</div>
+                        <a href="https://wellxb.com/ssiqia" class="trader-contact" target="_blank">Contact on WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
+    <!-- Third Section: Supported Gift Cards - Optimized for Smooth Scrolling -->
+    <section id="giftcards" class="giftcards-section">
         <div class="container">
-            <h2 class="section-title">Why Choose GiftCardPro?</h2>
-            <p class="section-subtitle">We provide the most reliable and efficient gift card trading service</p>
+            <h2 class="section-title">Supported Gift Cards</h2>
+            <p class="section-subtitle">We support various popular brand gift card trading, fast cash conversion, safe and reliable</p>
             
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-bolt"></i>
+            <div class="giftcards-slider-container">
+                <div class="giftcards-slider" id="giftcardsSlider">
+                    <!-- Steam Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo steam-logo">
+                            <i class="fab fa-steam"></i>
                         </div>
-                        <h4>Lightning Fast</h4>
-                        <p>Get cash within minutes. Our automated system processes transactions instantly.</p>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">Steam Gift Card</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                    
+                    <!-- Xbox Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo xbox-logo">
+                            <i class="fab fa-xbox"></i>
                         </div>
-                        <h4>100% Secure</h4>
-                        <p>Bank-level encryption protects your transactions and personal information.</p>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">Xbox Gift Card</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-headset"></i>
+                    
+                    <!-- iTunes Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo itunes-logo">
+                            <i class="fab fa-apple"></i>
                         </div>
-                        <h4>24/7 Support</h4>
-                        <p>Round-the-clock customer support via multiple channels to assist you.</p>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">iTunes Gift Card</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-gift"></i>
+                    
+                    <!-- Google Play Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo google-logo">
+                            <i class="fab fa-google-play"></i>
                         </div>
-                        <h4>Wide Selection</h4>
-                        <p>We accept a wide variety of gift cards from all major brands and retailers.</p>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">Google Play Card</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Razer Gold Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo razer-logo">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">Razer Gold Code</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Amazon Gift Card -->
+                    <div class="giftcard-item">
+                        <div class="giftcard-logo amazon-logo">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                        <div class="giftcard-info">
+                            <h3 class="giftcard-name">Amazon Gift Card</h3>
+                            <a href="https://wellxb.com/ssiqia" class="giftcard-action" target="_blank">Trade Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section - 3个客服，手机上横向滑动 -->
-    <section id="team" class="team-section">
+    <!-- Fourth Section: Why Choose Us -->
+    <section id="features" class="features-section">
         <div class="container">
-            <h2 class="section-title">Our Trading Specialists</h2>
-            <p class="section-subtitle">Meet our dedicated team of gift card trading experts</p>
+            <h2 class="section-title">Why Choose GiftJoy?</h2>
+            <p class="section-subtitle">We provide the most reliable and efficient gift card trading service for an unparalleled trading experience</p>
             
-            <div class="team-slider-container">
-                <div class="team-track" id="teamTrack">
-                    <!-- Team members will be inserted here by JavaScript -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-desc">Get cash within minutes. Our automated system processes transactions instantly, no long waits.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">100% Secure</h3>
+                    <p class="feature-desc">Bank-level encryption protects your transactions and personal information, ensuring every transaction is safe.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Round-the-clock support through multiple channels, ready to answer your questions anytime.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="feature-title">Wide Selection</h3>
+                    <p class="feature-desc">Support various gift cards from all major brands and retailers to meet different trading needs.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Fifth Section: Testimonials -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Customer Reviews</h2>
-            <p class="section-subtitle">See what our customers have to say about their experience</p>
+            <h2 class="section-title">Customer Testimonials</h2>
+            <p class="section-subtitle">See what our customers have to say about their trading experience</p>
             
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "I've traded over $5,000 worth of gift cards with GiftCardPro and always received payment within minutes. Their service is fast and reliable."
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"If you've traded gift cards on online platforms with GiftJoy, you get cash within minutes every time. Their service is fast and reliable, the best gift card trading platform I've used."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            M
                         </div>
-                        <div class="customer-info">
-                            <div class="customer-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="customer-details">
-                                <h5>Michael Rodriguez</h5>
-                                <p>Steam & Xbox Trader</p>
-                            </div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Steam Gift Card Trader</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "The 24/7 customer support is amazing! I had an issue late at night and they resolved it immediately. Highly recommend GiftCardPro."
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"GiftJoy's 24-hour customer support is excellent! I purchased their service package and they processed my transaction immediately. Highly recommend GiftJoy to all gift card traders."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            S
                         </div>
-                        <div class="customer-info">
-                            <div class="customer-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="customer-details">
-                                <h5>Sarah Johnson</h5>
-                                <p>iTunes & Google Play Trader</p>
-                            </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Google Play Trader</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "As a frequent trader, I appreciate the security and speed of GiftCardPro. Their platform is intuitive and the whole process is seamless."
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a professional trader, I appreciate GiftJoy's security and speed. They are very professional with the platform, and the entire trading process is seamless, allowing me to trade with confidence."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            D
                         </div>
-                        <div class="customer-info">
-                            <div class="customer-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="customer-details">
-                                <h5>David Chen</h5>
-                                <p>Professional Gift Card Trader</p>
-                            </div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Professional Gift Card Trader</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="howto" class="howto-section">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Three simple steps to exchange your gift cards for cash instantly</p>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-paper-plane"></i>
-                        </div>
-                        <h4>Submit Your Card</h4>
-                        <p>Contact our team with your gift card details through WhatsApp, Telegram, or our contact form.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-comments-dollar"></i>
-                        </div>
-                        <h4>Get Instant Offer</h4>
-                        <p>Receive an immediate offer for your gift card based on current market value.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-money-check-alt"></i>
-                        </div>
-                        <h4>Receive Payment</h4>
-                        <p>Once confirmed, receive payment instantly through your preferred method - bank transfer, e-wallet, or cryptocurrency.</p>
                     </div>
                 </div>
             </div>
@@ -1054,339 +984,174 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h4>GiftCardPro</h4>
-                    <p>World's leading gift card trading platform. Exchange your gift cards for cash at premium rates with lightning-fast processing.</p>
+                    <h3>GiftJoy</h3>
+                    <p style="color: #b0b7c3; margin-bottom: 20px; font-size: 14px;">The world's leading gift card trading platform, converting your gift cards to cash with ultra-fast processing, offering a brand new trading experience.</p>
                     <div class="contact-info">
-                        <p><i class="fas fa-phone"></i> +86 15391667580</p>
-                        <p><i class="fas fa-envelope"></i> support@giftcardpro.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Global Trading Center</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://wa.me/8615391667580" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/giftcardpro" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <p><i class="fas fa-phone-alt"></i> +86 18186536901</p>
+                        <p><i class="fas fa-envelope"></i> support@giftjoy.com</p>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#giftcards">Gift Cards</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="#howto">How It Works</a></li>
+                    <h3>Popular Cards</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">STEAM Gift Cards</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">XBOX Gift Cards</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">iTunes Gift Cards</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Google Play Cards</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Razer Gold Codes</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Amazon Gift Cards</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Popular Cards</h4>
-                    <ul>
-                        <li><a href="#giftcards">STEAM Gift Cards</a></li>
-                        <li><a href="#giftcards">XBOX Gift Cards</a></li>
-                        <li><a href="#giftcards">iTunes Gift Cards</a></li>
-                        <li><a href="#giftcards">Google Play Cards</a></li>
-                        <li><a href="#giftcards">Razer Gold Cards</a></li>
-                        <li><a href="#giftcards">Amazon Gift Cards</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Trading Services</h4>
-                    <ul>
-                        <li><a href="#services">Instant Trading</a></li>
-                        <li><a href="#services">Bulk Card Trading</a></li>
-                        <li><a href="#services">Corporate Services</a></li>
-                        <li><a href="#services">Secure Payment</a></li>
-                        <li><a href="#services">24/7 Support</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                    <h3>Trading Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Instant Trading</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Bulk Card Trading</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Enterprise Services</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Secure Payments</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">24/7 Support</a></li>
+                        <li><a href="https://wellxb.com/ssiqia" target="_blank">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 GiftCardPro Trading Platform. All rights reserved.</p>
+                <p>&copy; 2023 GiftJoy Gift Card Trading Platform. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Gift card data
-        const giftCards = [
-            { id: 1, name: "STEAM", type: "Steam Wallet Code", icon: "fab fa-steam", color: "#171a21" },
-            { id: 2, name: "XBOX", type: "Xbox Gift Card", icon: "fab fa-xbox", color: "#107c10" },
-            { id: 3, name: "iTunes", type: "Apple Gift Card", icon: "fab fa-apple", color: "#000000" },
-            { id: 4, name: "Google Play", type: "Google Play Card", icon: "fab fa-google-play", color: "#4285f4" },
-            { id: 5, name: "RAZER GOLD", type: "Razer Gold Code", icon: "fas fa-gem", color: "#44d62c" },
-            { id: 6, name: "Amazon", type: "Amazon Gift Card", icon: "fab fa-amazon", color: "#ff9900" },
-            { id: 7, name: "PlayStation", type: "PSN Gift Card", icon: "fab fa-playstation", color: "#003791" },
-            { id: 8, name: "Nintendo", type: "Nintendo eShop", icon: "fas fa-gamepad", color: "#e60012" },
-            { id: 9, name: "Spotify", type: "Spotify Premium", icon: "fab fa-spotify", color: "#1db954" },
-            { id: 10, name: "Netflix", type: "Netflix Gift Card", icon: "fab fa-netflix", color: "#e50914" }
-        ];
-
-        // Team members data - 只设置3个客服
-        const teamMembers = [
-            { id: 1, name: "Trader_Ki", position: "Senior Trading Manager", icon: "fas fa-user-tie" },
-            { id: 2, name: "Trader_Xing", position: "Trading Operations Head", icon: "fas fa-user-tie" },
-            { id: 3, name: "Trader_Tian", position: "Customer Relations Manager", icon: "fas fa-user-tie" }
-        ];
-
-        // DOM elements
-        const giftcardTrack = document.getElementById('giftcardTrack');
-        const teamTrack = document.getElementById('teamTrack');
-        const sliderDots = document.getElementById('sliderDots');
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
         
-        // 礼品卡滑动相关变量
-        let isDragging = false;
-        let startPosition = 0;
-        let currentTranslate = 0;
-        let previousTranslate = 0;
-        let currentIndex = 0;
-        let sliderInterval;
-
-        // 初始化礼品卡滑动
-        function initGiftCardSlider() {
-            // 清空现有内容
-            giftcardTrack.innerHTML = '';
-            sliderDots.innerHTML = '';
-            
-            // 创建礼品卡项目
-            giftCards.forEach((card, index) => {
-                // 创建卡片元素
-                const cardElement = document.createElement('div');
-                cardElement.className = 'giftcard-item';
-                cardElement.innerHTML = `
-                    <div class="giftcard-logo">
-                        <i class="${card.icon}"></i>
-                    </div>
-                    <h5>${card.name}</h5>
-                    <p>${card.type}</p>
-                    <button onclick="contactForCard('${card.name}')">Trade Now</button>
-                `;
-                
-                // 设置卡片颜色
-                const icon = cardElement.querySelector('i');
-                icon.style.color = card.color;
-                
-                giftcardTrack.appendChild(cardElement);
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking menu links
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
             });
-            
-            // 创建滑动指示点
-            giftCards.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
-                dot.dataset.index = index;
-                dot.addEventListener('click', () => goToSlide(index));
-                sliderDots.appendChild(dot);
-            });
-            
-            // 设置初始位置
-            currentIndex = 0;
-            updateSliderPosition();
-            
-            // 添加触摸事件监听
-            addTouchListeners();
-            
-            // 开始自动滑动
-            startAutoSlide();
-        }
-
-        // 初始化团队滑块
-        function initTeamSlider() {
-            // 清空现有内容
-            teamTrack.innerHTML = '';
-            
-            // 创建团队成员项目
-            teamMembers.forEach(member => {
-                const memberElement = document.createElement('div');
-                memberElement.className = 'team-member';
-                memberElement.innerHTML = `
-                    <div class="team-avatar">
-                        <i class="${member.icon}"></i>
-                    </div>
-                    <h4>${member.name}</h4>
-                    <p>${member.position}</p>
-                    <a href="https://wa.me/8615391667580?text=I%20would%20like%20to%20contact%20${member.name}%20from%20GiftCardPro" 
-                       target="_blank" class="contact-btn">Contact Now</a>
-                `;
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // Optimized Gift Card Slider with Smooth Scrolling
+        const slider = document.getElementById('giftcardsSlider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let momentumId;
+        
+        // Improved touch and mouse event handling for smooth scrolling
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            cancelMomentumTracking();
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            beginMomentumTracking();
+        });
+        
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // Reduced multiplier for smoother scrolling
+            slider.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Touch events with improved smoothness
+        slider.addEventListener('touchstart', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            cancelMomentumTracking();
+        }, { passive: true });
+        
+        slider.addEventListener('touchend', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            beginMomentumTracking();
+        });
+        
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            if (!e.touches || e.touches.length === 0) return;
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // Reduced multiplier for smoother scrolling
+            slider.scrollLeft = scrollLeft - walk;
+        }, { passive: true });
+        
+        // Momentum tracking for smoother scrolling
+        let velX = 0;
+        let momentumX = 0;
+        
+        const beginMomentumTracking = () => {
+            cancelMomentumTracking();
+            momentumId = requestAnimationFrame(momentumLoop);
+        };
+        
+        const cancelMomentumTracking = () => {
+            cancelAnimationFrame(momentumId);
+        };
+        
+        const momentumLoop = () => {
+            slider.scrollLeft += velX;
+            velX *= 0.95; // Friction factor
+            if (Math.abs(velX) > 0.5) {
+                momentumId = requestAnimationFrame(momentumLoop);
+            }
+        };
+        
+        // Ensure all external links open in new tab
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            if (!link.getAttribute('target')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+        
+        // Smooth scrolling to anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                teamTrack.appendChild(memberElement);
-            });
-        }
-
-        // 添加触摸事件监听
-        function addTouchListeners() {
-            giftcardTrack.addEventListener('touchstart', touchStart);
-            giftcardTrack.addEventListener('touchmove', touchMove);
-            giftcardTrack.addEventListener('touchend', touchEnd);
-            
-            giftcardTrack.addEventListener('mousedown', touchStart);
-            giftcardTrack.addEventListener('mousemove', touchMove);
-            giftcardTrack.addEventListener('mouseup', touchEnd);
-            giftcardTrack.addEventListener('mouseleave', touchEnd);
-        }
-
-        // 触摸开始
-        function touchStart(event) {
-            // 停止自动滑动
-            clearInterval(sliderInterval);
-            
-            if (event.type === 'touchstart') {
-                startPosition = event.touches[0].clientX;
-            } else {
-                startPosition = event.clientX;
-                event.preventDefault();
-            }
-            
-            isDragging = true;
-            giftcardTrack.style.transition = 'none';
-        }
-
-        // 触摸移动
-        function touchMove(event) {
-            if (!isDragging) return;
-            
-            let currentPosition = 0;
-            if (event.type === 'touchmove') {
-                currentPosition = event.touches[0].clientX;
-            } else {
-                currentPosition = event.clientX;
-            }
-            
-            const diff = currentPosition - startPosition;
-            currentTranslate = previousTranslate + diff;
-            
-            // 限制滑动范围
-            const maxTranslate = 0;
-            const minTranslate = -(giftCards.length - 1) * getSlideWidth();
-            
-            if (currentTranslate > maxTranslate) {
-                currentTranslate = maxTranslate;
-            } else if (currentTranslate < minTranslate) {
-                currentTranslate = minTranslate;
-            }
-            
-            giftcardTrack.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        // 触摸结束
-        function touchEnd() {
-            isDragging = false;
-            giftcardTrack.style.transition = 'transform 0.3s ease';
-            
-            // 计算最近的幻灯片索引
-            const movedBy = currentTranslate - previousTranslate;
-            const slideWidth = getSlideWidth();
-            
-            if (Math.abs(movedBy) > slideWidth / 4) {
-                if (movedBy < 0 && currentIndex < giftCards.length - 1) {
-                    currentIndex++;
-                } else if (movedBy > 0 && currentIndex > 0) {
-                    currentIndex--;
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
-            }
-            
-            // 更新位置
-            updateSliderPosition();
-            previousTranslate = currentIndex * -getSlideWidth();
-            
-            // 重新开始自动滑动
-            startAutoSlide();
-        }
-
-        // 获取幻灯片宽度
-        function getSlideWidth() {
-            const slide = document.querySelector('.giftcard-item');
-            if (!slide) return 280; // 默认宽度
-            return slide.offsetWidth + 30; // 包括 margin
-        }
-
-        // 更新滑块位置
-        function updateSliderPosition() {
-            const slideWidth = getSlideWidth();
-            currentTranslate = currentIndex * -slideWidth;
-            previousTranslate = currentTranslate;
-            
-            giftcardTrack.style.transform = `translateX(${currentTranslate}px)`;
-            
-            // 更新指示点
-            const dots = document.querySelectorAll('.slider-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        // 跳转到指定幻灯片
-        function goToSlide(index) {
-            currentIndex = index;
-            updateSliderPosition();
-            
-            // 重新开始自动滑动
-            clearInterval(sliderInterval);
-            startAutoSlide();
-        }
-
-        // 开始自动滑动
-        function startAutoSlide() {
-            clearInterval(sliderInterval);
-            sliderInterval = setInterval(() => {
-                if (currentIndex < giftCards.length - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
-                updateSliderPosition();
-            }, 5000);
-        }
-
-        // 联系特定卡片
-        function contactForCard(cardName) {
-            const message = `I want to trade ${cardName} gift card.`;
-            window.open(`https://wa.me/8615391667580?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        // 页面加载初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化滑块
-            initGiftCardSlider();
-            initTeamSlider();
-            
-            // 平滑滚动导航
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // 电话号码点击事件
-            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    console.log('Calling: ' + this.textContent);
-                });
-            });
-            
-            // 窗口大小变化时重新初始化滑块
-            window.addEventListener('resize', function() {
-                initGiftCardSlider();
             });
         });
     </script>
